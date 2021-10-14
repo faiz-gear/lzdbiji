@@ -44,13 +44,13 @@ categories: 前端框架
 
 - 使用JSX语法创建react元素
 
-- ```react
+```react
   const title = <h1>hello JSX<h1>
   ```
 
 - 使用ReactDOM.render()方法渲染元素到页面中
 
-- ```react
+```react
   ReactDOM.render(title, document.querySelector('#root'))
   ```
 
@@ -71,7 +71,7 @@ create-react-app脚手架中默认有@babel/preset-react，会对项目中的JSX
 
 - 语法： { javascript表达式 }
 
-- ```react
+```react
   const name = 'jack'
   const div = (
   	<div>hello {name}</div>
@@ -93,7 +93,7 @@ create-react-app脚手架中默认有@babel/preset-react，会对项目中的JSX
 
 - 可以使用if/else或三元运算符或逻辑于运算符来实现
 
-- ```react
+```react
   const isLoading = false
   const loadData = () => {
     return isLoading ?  (<div>加载中...</div>) : (<div>加载完成</div>)
@@ -111,7 +111,7 @@ create-react-app脚手架中默认有@babel/preset-react，会对项目中的JSX
 
 - 尽量避免使用索引作为key
 
-- ```react
+```react
   const songs = [
     {id: 1, name: '痴心绝对'},
     {id: 2, name: '童话'},
@@ -152,7 +152,7 @@ const title = (
 
 - 使用函数名作为组件标签名
 
-- ```react
+```react
   function Hello() {
   	return(
   		<div>这是我的第一个函数组件</div>
@@ -173,7 +173,7 @@ const title = (
 
 - 约定4：render（）方法必须有返回值，表示该组件的结构
 
-- ```react
+```react
   class Hello extends React.Component {
   	render() {
   		return <div>我是类组件<div>
@@ -196,18 +196,18 @@ const title = (
 
 6. 渲染组件
 
-7. ```react
-   // Hello.js
-   import React from 'react'
-   class Hello extends React.Component {
-     render() {
-       return <div>我是Hello组件</div>
-     }
-   }
-   // index.js
-   import Hello from './Hello'
-   ReactDOM.render(<Hello/>, root)
-   ```
+```react
+  // Hello.js
+  import React from 'react'
+  class Hello extends React.Component {
+    render() {
+      return <div>我是Hello组件</div>
+    }
+  }
+  // index.js
+  import Hello from './Hello'
+  ReactDOM.render(<Hello/>, root)
+```
 
 ## 九、react事件处理
 
@@ -219,7 +219,7 @@ const title = (
 
 - 类组件中绑定事件
 
-- ```react
+```react
   class App extends React.Component {
     handleClick() {
       console.log('click')
@@ -232,7 +232,7 @@ const title = (
 
 - 函数组件中绑定事件
 
-- ```react
+```react
   function App () {
     handleClick() {
       console.log('click')
@@ -249,7 +249,7 @@ const title = (
 
   - 合成事件：兼容所有浏览器，无需担心跨浏览器兼容性问题
 
-  - ```react
+  ```react
     class Hello extends React.Component {
       handleClick(e) {
         e.preventDefault()
@@ -277,7 +277,7 @@ const title = (
 
 - 通过this.state来获取状态
 
-- ```react
+```react
   class Hello extends React.Component {
     // constructor() {
     //  super(); //
@@ -305,7 +305,7 @@ const title = (
 
 - setState()作用：修改state、更新UI
 
-- ```react
+```react
   this.setState({
     count: this.state.count + 1
   })
@@ -316,7 +316,7 @@ const title = (
 
 1. 利用箭头函数改变this指向
 
-   - ```react
+  ```react
      class Hello extends React.Component {
      	state = {
          count: 1
@@ -339,7 +339,7 @@ const title = (
 
 2. 利用bind改变this指向
 
-   - ```react
+  ```react
      class Hello extends React.Component {
      	constructor() {
          this.state = {
@@ -365,7 +365,7 @@ const title = (
 
 3. class的箭头函数实例方法（推荐方式，脚手架配置的babel对这种语法进行了转换）
 
-   - ```react
+  ```react
      class Hello extends React.Component {
      	constructor() {
          this.state = {
@@ -421,7 +421,7 @@ class Hello extends React.Component {
 
 - 通过React.createRef()方法创建ref对象
 
-- ```react
+```react
   constructor() {
     super()
     this.txtRef = React.createRef()
@@ -432,7 +432,7 @@ class Hello extends React.Component {
 
 - 表单使用ref对象
 
-- ```react
+```react
   render() {
     return (
     	<div>
@@ -447,7 +447,7 @@ class Hello extends React.Component {
 
 - 通过ref对象获取表单的值
 
-- ```react
+```react
   getValue = () => {
   	console.log(this.txtRef.current.value)
   }
@@ -461,7 +461,7 @@ class Hello extends React.Component {
 
 - 接收数据：函数组件直接用props，类组件用this.props（和作用域有关，类组件的props加在实例上，函数组件直接通过参数接收）
 
-- ```react
+```react
    // 1.函数组件props
   const Hello = props => {
     return (
@@ -563,7 +563,7 @@ class Son extends React.Component {
 
 - 子组件：通过props获取共享状态和操作共享状态
 
-- ```react
+```react
   class Parent extends React.Component {
     // 状态提升
     state = {
@@ -613,7 +613,7 @@ class Son extends React.Component {
 
 - 使用 context, 我们可以避免通过中间元素传递 props：
 
-- ```react
+```react
   // Context 可以让我们无须明确地传遍每一个组件，就能将值深入传递进组件树。
   // 为当前的 theme 创建一个 context（“light”为默认值）。
   const ThemeContext = React.createContext('light');
@@ -654,7 +654,7 @@ class Son extends React.Component {
 
   - 1.React.createContext方法创建context
 
-  - ```react
+  ```react
     const MyContext = React.createContext(defaultValue)
     // 创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 Provider 中读取到当前的 context 值。
     // 只有当组件所处的树中没有匹配到 Provider 时，其 defaultValue 参数才会生效。此默认值有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 undefined 传递给 Provider 的 value 时，消费组件的 defaultValue 不会生效
@@ -664,7 +664,7 @@ class Son extends React.Component {
 
   - 2.使用Context.Provider提供数据
 
-  - ```react
+  ```react
     <MyContext.Provider value={/* 某个值 */} />
     // or
     <Provider value={} />
@@ -681,7 +681,7 @@ class Son extends React.Component {
 
   - 因为 context 会使用参考标识（reference identity）来决定何时进行渲染，这里可能会有一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，以下的代码会重渲染所有下面的 consumers 组件，因为 `value` 属性总是被赋值为新的对象：
 
-  - ```react
+  ```react
     class App extends React.Component {
       render() {
         return (
@@ -695,7 +695,7 @@ class Son extends React.Component {
 
   - 为了防止这种情况，将 value 状态提升到父节点的 state 里：
 
-  - ```react
+  ```react
     class App extends React.Component {
       constructor(props) {
         super(props);
@@ -718,7 +718,7 @@ class Son extends React.Component {
 
     - 方式1：Class.contextType
 
-    - ```react
+    ```react
        // 挂载在 class 上的 contextType 属性会被重赋值为一个由 React.createContext() 创建的 Context 对象。此属性能让你使用 this.context 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。
       class MyClass extends React.Component {
         static contextType = MyContext;
@@ -731,7 +731,7 @@ class Son extends React.Component {
 
     - 方式2：Context.Consumer
 
-    - ```react
+    ```react
       // 一个 React 组件可以订阅 context 的变更，此组件可以让你在函数式组件中可以订阅 context。
       
       // 这种方法需要一个函数作为子元素（function as a child）。这个函数接收当前的 context 值，并返回一个 React 节点。传递给函数的 value 值等价于组件树上方离这个 context 最近的 Provider 提供的 value 值。如果没有对应的 Provider，value 参数等同于传递给 createContext() 的 defaultValue。

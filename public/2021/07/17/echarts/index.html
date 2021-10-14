@@ -418,14 +418,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-10-12
+                    2021-10-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    2.6k
                 </div>
                 
 
@@ -894,94 +894,111 @@
 </li>
 <li><p>动画时长</p>
 <ul>
-<li><p>animationDuration：5000</p>
-</li>
-<li><p>```javascript<br>animationDuration： function（arg） {<br>  // 这里的arg是所有需要动画效果的图元的索引，会根据不同形式的图元元素进行分组<br>  return arg * 10<br>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 缓动动画
-
-  - animationEasing: &#39;bounceOut&#39;
-
-- 动画阈值
-
-  - animationThreshold： 8
-  - 单中形式的元素数量大于这个阈值会关闭动画
-
-### 十七、全局Echarts对象常用方法
-
-- init方法
-
-  - 初始化Echarts实例对象
-  - 使用主题（第二个参数）
-
-- registerTheme方法
-
-  - 注册主题
-  - 只有注册过的主题，才能在init方法中使用该主题
-
-- registerMap方法
-
-  - 注册地图数据
-
-    - &#96;&#96;&#96;javascript
-      $.get(&#39;json&#x2F;map&#x2F;china.json&#39;, function(ChinaJson) &#123;
-        echarts.registerMap(&#39;china&#39;, chinaJson)
-      &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>geo组件使用地图数据</p>
+<li>animationDuration：5000</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">animationDuration： <span class="token keyword">function</span>（arg） <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 这里的arg是所有需要动画效果的图元的索引，会根据不同形式的图元元素进行分组</span>
+  <span class="token keyword">return</span> arg <span class="token operator">*</span> <span class="token number">10</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>缓动动画</p>
 <ul>
-<li>```javascript<br>var option = {<br>  geo: {<pre><code>type: &#39;map&#39;,
-map: &#39;china&#39;
-</code></pre>
-  }<br>}<pre class="line-numbers language-none"><code class="language-none">
-- connect方法
-
-  - 一个页面中可以有多个独立的图表
-  - 每一个图表对应一个Echarts实例对象
-  - connect可以实现多图关联，传入联动目标为Echarts实例对象，支持数组
-    - 保存图片的自动拼接（saveAsImage）
-    - 刷新按钮
-    - 重置按钮
-    - 提示框联动、图例选择、数据范围修改等等
-
-### 十八、echartsInstance实例常用方法
-
-- setOption方法
-
-  - 设置或修改图表实例的配置项以及数据
-  - 多次调用setOption方法
-    - 合并新旧配置
-    - 增量动画
-
-- resize方法
-
-  - 重新计算和绘制图表
-  - 一般和window对象的resize事件结合使用
-    - window.onresize &#x3D; mEcharts.resize
-
-- on\off方法
-
-  - 绑定或者解绑事件处理函数
-  - 鼠标事件
-    - 常见事件：click、dbclick、mousedown、mousemove、mouseup等
-  - Echarts事件
-    - 常见事件：legendselectchanged、datazoom、pieselectchanged、ma&#39;pselectchanged
-
-- dispatchAction
-
-  - 触发某些行为
-
-  - 使用代码模拟用户的行为
-
-  - &#96;&#96;&#96;javascript
-    mCharts.dispatchAction(&#123;
-      type: &#39;hightlight&#39;, &#x2F;&#x2F; 事件类型
-      seriesIndex: 0, &#x2F;&#x2F; 图表索引(系列)
-      dataIndex: 1 &#x2F;&#x2F; 图表中哪一项高亮
-    &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>animationEasing: ‘bounceOut’</li>
+</ul>
+</li>
+<li><p>动画阈值</p>
+<ul>
+<li>animationThreshold： 8</li>
+<li>单中形式的元素数量大于这个阈值会关闭动画</li>
+</ul>
+</li>
+</ul>
+<h3 id="十七、全局Echarts对象常用方法"><a href="#十七、全局Echarts对象常用方法" class="headerlink" title="十七、全局Echarts对象常用方法"></a>十七、全局Echarts对象常用方法</h3><ul>
+<li><p>init方法</p>
+<ul>
+<li>初始化Echarts实例对象</li>
+<li>使用主题（第二个参数）</li>
+</ul>
+</li>
+<li><p>registerTheme方法</p>
+<ul>
+<li>注册主题</li>
+<li>只有注册过的主题，才能在init方法中使用该主题</li>
+</ul>
+</li>
+<li><p>registerMap方法</p>
+<ul>
+<li><p>注册地图数据</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">$<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'json/map/china.json'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">ChinaJson</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  echarts<span class="token punctuation">.</span><span class="token function">registerMap</span><span class="token punctuation">(</span><span class="token string">'china'</span><span class="token punctuation">,</span> chinaJson<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>geo组件使用地图数据</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> option <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  geo<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    type<span class="token operator">:</span> <span class="token string">'map'</span><span class="token punctuation">,</span>
+    map<span class="token operator">:</span> <span class="token string">'china'</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+<li><p>connect方法</p>
+<ul>
+<li>一个页面中可以有多个独立的图表</li>
+<li>每一个图表对应一个Echarts实例对象</li>
+<li>connect可以实现多图关联，传入联动目标为Echarts实例对象，支持数组<ul>
+<li>保存图片的自动拼接（saveAsImage）</li>
+<li>刷新按钮</li>
+<li>重置按钮</li>
+<li>提示框联动、图例选择、数据范围修改等等</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+<h3 id="十八、echartsInstance实例常用方法"><a href="#十八、echartsInstance实例常用方法" class="headerlink" title="十八、echartsInstance实例常用方法"></a>十八、echartsInstance实例常用方法</h3><ul>
+<li><p>setOption方法</p>
+<ul>
+<li>设置或修改图表实例的配置项以及数据</li>
+<li>多次调用setOption方法<ul>
+<li>合并新旧配置</li>
+<li>增量动画</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>resize方法</p>
+<ul>
+<li>重新计算和绘制图表</li>
+<li>一般和window对象的resize事件结合使用<ul>
+<li>window.onresize = mEcharts.resize</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>on\off方法</p>
+<ul>
+<li>绑定或者解绑事件处理函数</li>
+<li>鼠标事件<ul>
+<li>常见事件：click、dbclick、mousedown、mousemove、mouseup等</li>
+</ul>
+</li>
+<li>Echarts事件<ul>
+<li>常见事件：legendselectchanged、datazoom、pieselectchanged、ma’pselectchanged</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>dispatchAction</p>
+<ul>
+<li><p>触发某些行为</p>
+</li>
+<li><p>使用代码模拟用户的行为</p>
+</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">mCharts<span class="token punctuation">.</span><span class="token function">dispatchAction</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  type<span class="token operator">:</span> <span class="token string">'hightlight'</span><span class="token punctuation">,</span> <span class="token comment">// 事件类型</span>
+  seriesIndex<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">// 图表索引(系列)</span>
+  dataIndex<span class="token operator">:</span> <span class="token number">1</span> <span class="token comment">// 图表中哪一项高亮</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 <li><p>clear</p>
 <ul>
 <li>清空当前实例，会移除实例中所有的组件和图表</li>
@@ -1004,36 +1021,36 @@ map: &#39;china&#39;
 </ul>
 </li>
 <li><p>创建对象</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> webSocket <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ws'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> wss <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket<span class="token punctuation">.</span>server</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  port<span class="token operator">:</span> <span class="token string">'8080'</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>监听事件</p>
 <ul>
-<li><p>```javascript<br>const webSocket = require(‘ws’)<br>const wss = new WebSocket.server({<br>  port: ‘8080’<br>})</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 监听事件
-
-  - 连接事件
-
-    - &#96;&#96;&#96;javascript
-      wss.on(&#39;connection&#39;, client &#x3D;&gt; &#123;
-        console.log(&#39;有客户端连接&#39;)
-      &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>连接事件</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">wss<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'connection'</span><span class="token punctuation">,</span> <span class="token parameter">client</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'有客户端连接'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
 <li><p>接受数据事件</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">wss<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'connection'</span><span class="token punctuation">,</span> <span class="token parameter">client</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'有客户端连接'</span><span class="token punctuation">)</span>
+  client<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token parameter">msg</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'客户端发送数据过来了'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>发送数据</p>
 <ul>
-<li>```javascript<br>wss.on(‘connection’, client =&gt; {<br>  console.log(‘有客户端连接’)<br>  client.on(‘message’, msg =&gt; {<pre><code>console.log(&#39;客户端发送数据过来了&#39;)
-</code></pre>
-  })<br>})<pre class="line-numbers language-none"><code class="language-none">
-    - 发送数据
-
-      - client.send(&#39;hello socket from back-end&#39;)
-
-- 前端
-
-  - 创建对象
-
-    - &#96;&#96;&#96;javascript
-      const ws &#x3D; new WebSocket(&#39;ws:&#x2F;&#x2F;localhost:8080&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>client.send(‘hello socket from back-end’)</li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li><p>前端</p>
+<ul>
+<li><p>创建对象</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'ws://localhost:8080'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 <li><p>监听事件</p>
 <ul>
 <li>连接成功事件<ul>
@@ -1854,7 +1871,7 @@ map: &#39;china&#39;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.3k</span>
+                class="white-color">13.4k</span>
             
             
             

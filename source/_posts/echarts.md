@@ -418,7 +418,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
   - animationDuration：5000
 
-  - ```javascript
+  ```javascript
     animationDuration： function（arg） {
       // 这里的arg是所有需要动画效果的图元的索引，会根据不同形式的图元元素进行分组
       return arg * 10
@@ -450,7 +450,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
   - 注册地图数据
 
-    - ```javascript
+    ```javascript
       $.get('json/map/china.json', function(ChinaJson) {
         echarts.registerMap('china', chinaJson)
       })
@@ -458,7 +458,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
   - geo组件使用地图数据
 
-    - ```javascript
+    ```javascript
       var option = {
         geo: {
           type: 'map',
@@ -506,7 +506,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
   - 使用代码模拟用户的行为
 
-  - ```javascript
+  ```javascript
     mCharts.dispatchAction({
       type: 'hightlight', // 事件类型
       seriesIndex: 0, // 图表索引(系列)
@@ -534,7 +534,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
   - 创建对象
 
-    - ```javascript
+    ```javascript
       const webSocket = require('ws')
       const wss = new WebSocket.server({
         port: '8080'
@@ -545,7 +545,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
     - 连接事件
 
-      - ```javascript
+      ```javascript
         wss.on('connection', client => {
           console.log('有客户端连接')
         })
@@ -553,7 +553,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
     - 接受数据事件
 
-      - ```javascript
+      ```javascript
         wss.on('connection', client => {
           console.log('有客户端连接')
           client.on('message', msg => {
@@ -570,7 +570,7 @@ echarts已经内置好了加载数据的动画，我们只需要在合适的时�
 
   - 创建对象
 
-    - ```javascript
+    ```javascript
       const ws = new WebSocket('ws://localhost:8080')
       ```
 

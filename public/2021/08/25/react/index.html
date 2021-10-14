@@ -418,21 +418,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2021-10-12
+                    2021-10-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    4k
+                    4.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    17 分
+                    18 分
                 </div>
                 
 
@@ -481,15 +481,15 @@
 </ul>
 <h4 id="2-npx命令介绍"><a href="#2-npx命令介绍" class="headerlink" title="2.npx命令介绍"></a>2.npx命令介绍</h4><p>目的：提升包内提供的命令行工具的使用体验。无需安装脚手架包，就可以直接使用这个包提供的命令</p>
 <h2 id="三、JSX语法的基本使用"><a href="#三、JSX语法的基本使用" class="headerlink" title="三、JSX语法的基本使用"></a>三、JSX语法的基本使用</h2><h4 id="1-使用步骤"><a href="#1-使用步骤" class="headerlink" title="1.使用步骤"></a>1.使用步骤</h4><ul>
-<li><p>使用JSX语法创建react元素</p>
-</li>
-<li><p>```react<br>const title = <h1>hello JSX<h1></p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 使用ReactDOM.render()方法渲染元素到页面中
-
-- &#96;&#96;&#96;react
-  ReactDOM.render(title, document.querySelector(&#39;#root&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>使用JSX语法创建react元素</li>
 </ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">const title &#x3D; &lt;h1&gt;hello JSX&lt;h1&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>使用ReactDOM.render()方法渲染元素到页面中</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">ReactDOM.render(title, document.querySelector(&#39;#root&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h4 id="2-为什么脚手架中可以使用JSX语法"><a href="#2-为什么脚手架中可以使用JSX语法" class="headerlink" title="2.为什么脚手架中可以使用JSX语法"></a>2.为什么脚手架中可以使用JSX语法</h4><p>create-react-app脚手架中默认有@babel/preset-react，会对项目中的JSX语法进行编译</p>
 <h4 id="3-注意点"><a href="#3-注意点" class="headerlink" title="3.注意点"></a>3.注意点</h4><ul>
 <li>元素的属性名使用驼峰命名法</li>
@@ -502,35 +502,38 @@
 </li>
 <li><p>语法： { javascript表达式 }</p>
 </li>
-<li><p>```react<br>const name = ‘jack’<br>const div = (</p>
-<pre><code>&lt;div&gt;hello &#123;name&#125;&lt;/div&gt;
-</code></pre>
-<p>)</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 注意点
-
-  - 单大括号中可以使用任意的JavaScript表达式
-  - JSX自身也是JS表达式，可以在单大括号中使用
-  - js中的对象不是表达式，不能直接在单大括号中使用，一般只会出现在style属性中
-  - 不能在&#123;&#125;中出现语句（如if&#x2F;for语句等 ）
-
-## 五、JSX的条件渲染
-
-- 场景：loading效果
-
-- 条件渲染：根据条件渲染特定的JSX结构
-
-- 可以使用if&#x2F;else或三元运算符或逻辑于运算符来实现
-
-- &#96;&#96;&#96;react
-  const isLoading &#x3D; false
-  const loadData &#x3D; () &#x3D;&gt; &#123;
-    return isLoading ?  (&lt;div&gt;加载中...&lt;&#x2F;div&gt;) : (&lt;div&gt;加载完成&lt;&#x2F;div&gt;)
-  &#125;
-  const title &#x3D; (
-    &lt;div&gt;&#123;loadData()&#125;&lt;&#x2F;div&gt;
-  )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">const name &#x3D; &#39;jack&#39;
+const div &#x3D; (
+	&lt;div&gt;hello &#123;name&#125;&lt;&#x2F;div&gt;
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p>注意点</p>
+<ul>
+<li>单大括号中可以使用任意的JavaScript表达式</li>
+<li>JSX自身也是JS表达式，可以在单大括号中使用</li>
+<li>js中的对象不是表达式，不能直接在单大括号中使用，一般只会出现在style属性中</li>
+<li>不能在{}中出现语句（如if/for语句等 ）</li>
+</ul>
+</li>
+</ul>
+<h2 id="五、JSX的条件渲染"><a href="#五、JSX的条件渲染" class="headerlink" title="五、JSX的条件渲染"></a>五、JSX的条件渲染</h2><ul>
+<li><p>场景：loading效果</p>
+</li>
+<li><p>条件渲染：根据条件渲染特定的JSX结构</p>
+</li>
+<li><p>可以使用if/else或三元运算符或逻辑于运算符来实现</p>
+</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">const isLoading &#x3D; false
+const loadData &#x3D; () &#x3D;&gt; &#123;
+  return isLoading ?  (&lt;div&gt;加载中...&lt;&#x2F;div&gt;) : (&lt;div&gt;加载完成&lt;&#x2F;div&gt;)
+&#125;
+const title &#x3D; (
+  &lt;div&gt;&#123;loadData()&#125;&lt;&#x2F;div&gt;
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="六、JSX的列表渲染"><a href="#六、JSX的列表渲染" class="headerlink" title="六、JSX的列表渲染"></a>六、JSX的列表渲染</h2><ul>
 <li><p>如果要渲染一组数据，应该使用数组的map方法</p>
 </li>
@@ -538,27 +541,31 @@
 </li>
 <li><p>尽量避免使用索引作为key</p>
 </li>
-<li><p>```react<br>const songs = [<br>  {id: 1, name: ‘痴心绝对’},<br>  {id: 2, name: ‘童话’},<br>  {id: 3, name: ‘演员’},<br>]<br>const title = (</p>
-  <ul>
-    {songs.map(item => <li key={item.id}>{item.name}</li>)}
-  </ul>
-)
-<pre class="line-numbers language-none"><code class="language-none">
-## 七、JSX的样式处理
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">const songs &#x3D; [
+  &#123;id: 1, name: &#39;痴心绝对&#39;&#125;,
+  &#123;id: 2, name: &#39;童话&#39;&#125;,
+  &#123;id: 3, name: &#39;演员&#39;&#125;,
+]
+const title &#x3D; (
+  &lt;ul&gt;
+    &#123;songs.map(item &#x3D;&gt; &lt;li key&#x3D;&#123;item.id&#125;&gt;&#123;item.name&#125;&lt;&#x2F;li&gt;)&#125;
+  &lt;&#x2F;ul&gt;
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-1. 行内样式
-2. 类名
-
-&#96;&#96;&#96;react
-import &#39;.&#x2F;index.css&#39;
+<h2 id="七、JSX的样式处理"><a href="#七、JSX的样式处理" class="headerlink" title="七、JSX的样式处理"></a>七、JSX的样式处理</h2><ol>
+<li>行内样式</li>
+<li>类名</li>
+</ol>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">import &#39;.&#x2F;index.css&#39;
 const name &#x3D; &#39;kobe&#39;
 
 const title &#x3D; (
   &lt;h1 className&#x3D;&quot;title&quot; style&#x3D;&#123;&#123;color: &#39;red&#39;, backgroundColor: &#39;blue&#39;&#125;&#125;&gt;
     我是&#123;name&#125;
   &lt;&#x2F;h1&gt;
-)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h2 id="八、react组件的两种创建方式"><a href="#八、react组件的两种创建方式" class="headerlink" title="八、react组件的两种创建方式"></a>八、react组件的两种创建方式</h2><h4 id="1-使用函数创建组件"><a href="#1-使用函数创建组件" class="headerlink" title="1.使用函数创建组件"></a>1.使用函数创建组件</h4><ul>
 <li><p>使用JS中的函数创建的组件叫做函数组件</p>
 </li>
@@ -568,33 +575,33 @@ const title &#x3D; (
 </li>
 <li><p>使用函数名作为组件标签名</p>
 </li>
-<li><p>```react<br>function Hello() {</p>
-<pre><code>return(
-    &lt;div&gt;这是我的第一个函数组件&lt;/div&gt;
-)
-</code></pre>
-<p>}<br>ReactDOM.render(<Hello/>, document.getElementById(‘root’))</p>
-<pre class="line-numbers language-none"><code class="language-none">
-#### 2.使用类创建组件
-
-- 类组件：使用ES6的class创建的组件
-
-- 约定1：类名称必须以大写字母开头
-
-- 约定2：类组件应该继承React.Component父类，从而可以使用父类中提供的方法和属性
-
-- 约定3：类组件必须提供render（）方法
-
-- 约定4：render（）方法必须有返回值，表示该组件的结构
-
-- &#96;&#96;&#96;react
-  class Hello extends React.Component &#123;
-  	render() &#123;
-  		return &lt;div&gt;我是类组件&lt;div&gt;
-  	&#125;
-  &#125;
-  ReactDOM.render(&lt;Hello&#x2F;&gt;, document.getElementById(&#39;root&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">function Hello() &#123;
+	return(
+		&lt;div&gt;这是我的第一个函数组件&lt;&#x2F;div&gt;
+	)
+&#125;
+ReactDOM.render(&lt;Hello&#x2F;&gt;, document.getElementById(&#39;root&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2-使用类创建组件"><a href="#2-使用类创建组件" class="headerlink" title="2.使用类创建组件"></a>2.使用类创建组件</h4><ul>
+<li><p>类组件：使用ES6的class创建的组件</p>
+</li>
+<li><p>约定1：类名称必须以大写字母开头</p>
+</li>
+<li><p>约定2：类组件应该继承React.Component父类，从而可以使用父类中提供的方法和属性</p>
+</li>
+<li><p>约定3：类组件必须提供render（）方法</p>
+</li>
+<li><p>约定4：render（）方法必须有返回值，表示该组件的结构</p>
+</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class Hello extends React.Component &#123;
+	render() &#123;
+		return &lt;div&gt;我是类组件&lt;div&gt;
+	&#125;
+&#125;
+ReactDOM.render(&lt;Hello&#x2F;&gt;, document.getElementById(&#39;root&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="3-抽离为独立的js模块"><a href="#3-抽离为独立的js模块" class="headerlink" title="3.抽离为独立的js模块"></a>3.抽离为独立的js模块</h4><ol>
 <li><p>创建Hello.js</p>
 </li>
@@ -608,56 +615,65 @@ const title &#x3D; (
 </li>
 <li><p>渲染组件</p>
 </li>
-<li><p>```react<br>// Hello.js<br>import React from ‘react’<br>class Hello extends React.Component {<br>  render() {</p>
-<pre><code>return &lt;div&gt;我是Hello组件&lt;/div&gt;
-</code></pre>
-<p>  }<br>}<br>// index.js<br>import Hello from ‘./Hello’<br>ReactDOM.render(<Hello/>, root)</p>
-<pre class="line-numbers language-none"><code class="language-none">
-## 九、react事件处理
-
-- react事件绑定语法与DOM事件语法相似
-
-- 语法：on + 事件名称 &#x3D; &#123;事件处理程序&#125;，比如： onClick &#x3D; &#123; () &#x3D;&gt; &#123;&#125; &#125;
-
-- 注意：react事件才用驼峰命名法
-
-- 类组件中绑定事件
-
-- &#96;&#96;&#96;react
-  class App extends React.Component &#123;
-    handleClick() &#123;
-      console.log(&#39;click&#39;)
-    &#125;
-  	render() &#123;
-      return &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;点击&lt;&#x2F;button&gt;
-    &#125;
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ol>
-<ul>
-<li><p>函数组件中绑定事件</p>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">&#x2F;&#x2F; Hello.js
+import React from &#39;react&#39;
+class Hello extends React.Component &#123;
+  render() &#123;
+    return &lt;div&gt;我是Hello组件&lt;&#x2F;div&gt;
+  &#125;
+&#125;
+&#x2F;&#x2F; index.js
+import Hello from &#39;.&#x2F;Hello&#39;
+ReactDOM.render(&lt;Hello&#x2F;&gt;, root)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="九、react事件处理"><a href="#九、react事件处理" class="headerlink" title="九、react事件处理"></a>九、react事件处理</h2><ul>
+<li><p>react事件绑定语法与DOM事件语法相似</p>
 </li>
-<li><p>```react<br>function App () {<br>  handleClick() {</p>
-<pre><code>console.log(&#39;click&#39;)
-</code></pre>
-<p>  }<br>  return <button onClick={handleClick}>点击</button><br>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 事件对象
+<li><p>语法：on + 事件名称 = {事件处理程序}，比如： onClick = { () =&gt; {} }</p>
+</li>
+<li><p>注意：react事件才用驼峰命名法</p>
+</li>
+<li><p>类组件中绑定事件</p>
+</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class App extends React.Component &#123;
+  handleClick() &#123;
+    console.log(&#39;click&#39;)
+  &#125;
+	render() &#123;
+    return &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;点击&lt;&#x2F;button&gt;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  - 可以通过事件处理程序的参数获取到事件对象
+<ul>
+<li>函数组件中绑定事件</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">function App () &#123;
+  handleClick() &#123;
+    console.log(&#39;click&#39;)
+  &#125;
+  return &lt;button onClick&#x3D;&#123;handleClick&#125;&gt;点击&lt;&#x2F;button&gt;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-  - react中的事件对象叫做：合成事件（对象）
-
-  - 合成事件：兼容所有浏览器，无需担心跨浏览器兼容性问题
-
-  - &#96;&#96;&#96;react
-    class Hello extends React.Component &#123;
-      handleClick(e) &#123;
-        e.preventDefault()
-      &#125;
-      render() &#123;
-        return &lt;a onClick&#x3D;&#123;this.handleClick&#125; href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;百度一下&lt;&#x2F;a&gt;
-      &#125;
-    &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<ul>
+<li><p>事件对象</p>
+<ul>
+<li><p>可以通过事件处理程序的参数获取到事件对象</p>
+</li>
+<li><p>react中的事件对象叫做：合成事件（对象）</p>
+</li>
+<li><p>合成事件：兼容所有浏览器，无需担心跨浏览器兼容性问题</p>
+</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class Hello extends React.Component &#123;
+  handleClick(e) &#123;
+    e.preventDefault()
+  &#125;
+  render() &#123;
+    return &lt;a onClick&#x3D;&#123;this.handleClick&#125; href&#x3D;&quot;http:&#x2F;&#x2F;www.baidu.com&quot;&gt;百度一下&lt;&#x2F;a&gt;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <h2 id="十、有状态组件和无状态组件"><a href="#十、有状态组件和无状态组件" class="headerlink" title="十、有状态组件和无状态组件"></a>十、有状态组件和无状态组件</h2><ul>
 <li>函数组件又叫做无状态组件，类组件又叫做有状态组件</li>
@@ -672,112 +688,115 @@ const title &#x3D; (
 </li>
 <li><p>通过this.state来获取状态</p>
 </li>
-<li><p>```react<br>class Hello extends React.Component {<br>  // constructor() {<br>  //  super(); //<br>  //  this.state = {<br>  //    count: 1<br>  // }<br>  // }<br>  // 简写<br>  state = {</p>
-<pre><code>    count: 1
-</code></pre>
-<p>  }<br>  render() {</p>
-<pre><code>return &lt;h2&gt;计数器： &#123;this.state.count&#125;&lt;/h2&gt;
-</code></pre>
-<p>  }<br>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-#### 2.setState()修改状态
-
-- 状态是可变的
-
-- 语法：this.setState(&#123;要修改的数据&#125;)
-
-- 注意：不要直接修改state的值
-
-- setState()作用：修改state、更新UI
-
-- &#96;&#96;&#96;react
-  this.setState(&#123;
-    count: this.state.count + 1
-  &#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
-<h2 id="十二、事件绑定this指向"><a href="#十二、事件绑定this指向" class="headerlink" title="十二、事件绑定this指向"></a>十二、事件绑定this指向</h2><ol>
-<li><p>利用箭头函数改变this指向</p>
-<ul>
-<li>```react<br>class Hello extends React.Component {<pre><code>state = &#123;
-count: 1
-</code></pre>
-  }<pre><code>render() &#123;
-return (
-    &lt;div&gt;
-      &lt;h2&gt;计数器：&#123;this.state.count&#125;&lt;/h2&gt;
-    &lt;button onClick=&#123;() =&gt; this.handleClick()&#125;&gt;+1&lt;/button&gt;
-  &lt;/div&gt;
-)
-</code></pre>
-  }<pre><code>handleClick() &#123;
-this.setState(&#123;
-  count: this.state.count + 1
-&#125;)
-</code></pre>
-  }<br>}<pre class="line-numbers language-none"><code class="language-none">
-2. 利用bind改变this指向
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class Hello extends React.Component &#123;
+  &#x2F;&#x2F; constructor() &#123;
+  &#x2F;&#x2F;  super(); &#x2F;&#x2F;
+  &#x2F;&#x2F;  this.state &#x3D; &#123;
+  &#x2F;&#x2F;    count: 1
+  &#x2F;&#x2F; &#125;
+  &#x2F;&#x2F; &#125;
+  &#x2F;&#x2F; 简写
+  state &#x3D; &#123;
+		count: 1
+  &#125;
+  render() &#123;
+    return &lt;h2&gt;计数器： &#123;this.state.count&#125;&lt;&#x2F;h2&gt;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-   - &#96;&#96;&#96;react
-     class Hello extends React.Component &#123;
-     	constructor() &#123;
-         this.state &#x3D; &#123;
-     			count: 1
-         &#125;
-         this.handleClick &#x3D; this.handleClick.bind(this)
-       &#125;
-     	render() &#123;
-     		return (
-     			&lt;div&gt;
-           	&lt;h2&gt;计数器：&#123;this.state.count&#125;&lt;&#x2F;h2&gt;
-             &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;-1&lt;&#x2F;button&gt;
-           &lt;&#x2F;div&gt;
-     		)
-     	&#125;
-     	handleClick() &#123;
-     		this.setState(&#123;
-           count: this.state.count - 1
-         &#125;)
-     	&#125;
-     &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
+<h4 id="2-setState-修改状态"><a href="#2-setState-修改状态" class="headerlink" title="2.setState()修改状态"></a>2.setState()修改状态</h4><ul>
+<li><p>状态是可变的</p>
 </li>
-<li><p>class的箭头函数实例方法（推荐方式，脚手架配置的babel对这种语法进行了转换）</p>
-<ul>
-<li>```react<br>class Hello extends React.Component {<pre><code>constructor() &#123;
-this.state = &#123;
-        count: 1
-&#125;
-this.handleClick = this.handleClick.bind(this)
-</code></pre>
-  }<pre><code>render() &#123;
+<li><p>语法：this.setState({要修改的数据})</p>
+</li>
+<li><p>注意：不要直接修改state的值</p>
+</li>
+<li><p>setState()作用：修改state、更新UI</p>
+</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">this.setState(&#123;
+  count: this.state.count + 1
+&#125;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="十二、事件绑定this指向"><a href="#十二、事件绑定this指向" class="headerlink" title="十二、事件绑定this指向"></a>十二、事件绑定this指向</h2><ol>
+<li>利用箭头函数改变this指向</li>
+</ol>
+  <pre class="line-numbers language-react" data-language="react"><code class="language-react">class Hello extends React.Component &#123;
+	state &#x3D; &#123;
+    count: 1
+  &#125;
+	render() &#123;
     return (
-        &lt;div&gt;
-      &lt;h2&gt;计数器：&#123;this.state.count&#125;&lt;/h2&gt;
-    &lt;button onClick=&#123;this.handleClick&#125;&gt;-1&lt;/button&gt;
-  &lt;/div&gt;
+    	&lt;div&gt;
+      	&lt;h2&gt;计数器：&#123;this.state.count&#125;&lt;&#x2F;h2&gt;
+        &lt;button onClick&#x3D;&#123;() &#x3D;&gt; this.handleClick()&#125;&gt;+1&lt;&#x2F;button&gt;
+      &lt;&#x2F;div&gt;
     )
-&#125;
-handleClick = () =&gt; &#123;
+  &#125;
+	handleClick() &#123;
     this.setState(&#123;
-  count: this.state.count - 1
-&#125;)
-&#125;
-</code></pre>
-}<pre class="line-numbers language-none"><code class="language-none">
-## 十三、表单处理
+      count: this.state.count + 1
+    &#125;)
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-#### 1.受控组件（常用）
+<ol start="2">
+<li>利用bind改变this指向</li>
+</ol>
+  <pre class="line-numbers language-react" data-language="react"><code class="language-react">class Hello extends React.Component &#123;
+	constructor() &#123;
+    this.state &#x3D; &#123;
+			count: 1
+    &#125;
+    this.handleClick &#x3D; this.handleClick.bind(this)
+  &#125;
+	render() &#123;
+		return (
+			&lt;div&gt;
+      	&lt;h2&gt;计数器：&#123;this.state.count&#125;&lt;&#x2F;h2&gt;
+        &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;-1&lt;&#x2F;button&gt;
+      &lt;&#x2F;div&gt;
+		)
+	&#125;
+	handleClick() &#123;
+		this.setState(&#123;
+      count: this.state.count - 1
+    &#125;)
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-其值收到react控制的表单元素
+<ol start="3">
+<li>class的箭头函数实例方法（推荐方式，脚手架配置的babel对这种语法进行了转换）</li>
+</ol>
+  <pre class="line-numbers language-react" data-language="react"><code class="language-react">class Hello extends React.Component &#123;
+	constructor() &#123;
+    this.state &#x3D; &#123;
+			count: 1
+    &#125;
+    this.handleClick &#x3D; this.handleClick.bind(this)
+  &#125;
+	render() &#123;
+		return (
+			&lt;div&gt;
+      	&lt;h2&gt;计数器：&#123;this.state.count&#125;&lt;&#x2F;h2&gt;
+        &lt;button onClick&#x3D;&#123;this.handleClick&#125;&gt;-1&lt;&#x2F;button&gt;
+      &lt;&#x2F;div&gt;
+		)
+	&#125;
+	handleClick &#x3D; () &#x3D;&gt; &#123;
+		this.setState(&#123;
+      count: this.state.count - 1
+    &#125;)
+	&#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-实现一个受控组件（类似于vue中的v-model）：
-
-1.表单value绑定state中的状态
-
-2.监听表单的change事件，修改state中的状态
-
-&#96;&#96;&#96;react
-class Hello extends React.Component &#123;
+<h2 id="十三、表单处理"><a href="#十三、表单处理" class="headerlink" title="十三、表单处理"></a>十三、表单处理</h2><h4 id="1-受控组件（常用）"><a href="#1-受控组件（常用）" class="headerlink" title="1.受控组件（常用）"></a>1.受控组件（常用）</h4><p>其值收到react控制的表单元素</p>
+<p>实现一个受控组件（类似于vue中的v-model）：</p>
+<p>1.表单value绑定state中的状态</p>
+<p>2.监听表单的change事件，修改state中的状态</p>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class Hello extends React.Component &#123;
 	state &#x3D; &#123;
     text: &#39;&#39;
   &#125;
@@ -789,60 +808,59 @@ class Hello extends React.Component &#123;
       text: e.target.value
     &#125;)
 	&#125;
-&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-</ul>
-</li>
-</ol>
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <h4 id="2-非受控组件（不常用）"><a href="#2-非受控组件（不常用）" class="headerlink" title="2.非受控组件（不常用）"></a>2.非受控组件（不常用）</h4><ul>
-<li><p>通过React.createRef()方法创建ref对象</p>
+<li>通过React.createRef()方法创建ref对象</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">constructor() &#123;
+  super()
+  this.txtRef &#x3D; React.createRef()
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>表单使用ref对象</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">render() &#123;
+  return (
+  	&lt;div&gt;
+    	&lt;input type&#x3D;&quot;text&quot; ref&#x3D;&#123; this.txtRef &#125;&gt;&lt;&#x2F;input&gt;
+      &lt;button onClick&#x3D;&#123; this.getValue &#125;&gt;获取value&lt;&#x2F;button&gt;
+    &lt;&#x2F;div&gt;
+  )
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>通过ref对象获取表单的值</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">getValue &#x3D; () &#x3D;&gt; &#123;
+	console.log(this.txtRef.current.value)
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="十四、组件通讯"><a href="#十四、组件通讯" class="headerlink" title="十四、组件通讯"></a>十四、组件通讯</h2><h4 id="1-组件的props"><a href="#1-组件的props" class="headerlink" title="1.组件的props"></a>1.组件的props</h4><ul>
+<li><p>props的作用： 与vue的props类似，父组件向子组件传递数据，子组件用来接收数据</p>
 </li>
-<li><p>```react<br>constructor() {<br>  super()<br>  this.txtRef = React.createRef()<br>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-  
-
-- 表单使用ref对象
-
-- &#96;&#96;&#96;react
+<li><p>接收数据：函数组件直接用props，类组件用this.props（和作用域有关，类组件的props加在实例上，函数组件直接通过参数接收）</p>
+</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react"> &#x2F;&#x2F; 1.函数组件props
+const Hello &#x3D; props &#x3D;&gt; &#123;
+  return (
+    &lt;h2&gt;func props: &#123; props.name &#125;&lt;&#x2F;h2&gt;
+  )
+&#125;
+&#x2F;&#x2F; 2.类组件props
+class Hello extends React.Component &#123;
   render() &#123;
     return (
-    	&lt;div&gt;
-      	&lt;input type&#x3D;&quot;text&quot; ref&#x3D;&#123; this.txtRef &#125;&gt;&lt;&#x2F;input&gt;
-        &lt;button onClick&#x3D;&#123; this.getValue &#125;&gt;获取value&lt;&#x2F;button&gt;
-      &lt;&#x2F;div&gt;
-    )
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
-<li><p>通过ref对象获取表单的值</p>
-</li>
-<li><p>```react<br>getValue = () =&gt; {</p>
-<pre><code>console.log(this.txtRef.current.value)
-</code></pre>
-<p>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-## 十四、组件通讯
-
-#### 1.组件的props
-
-- props的作用： 与vue的props类似，父组件向子组件传递数据，子组件用来接收数据
-
-- 接收数据：函数组件直接用props，类组件用this.props（和作用域有关，类组件的props加在实例上，函数组件直接通过参数接收）
-
-- &#96;&#96;&#96;react
-   &#x2F;&#x2F; 1.函数组件props
-  const Hello &#x3D; props &#x3D;&gt; &#123;
-    return (
-      &lt;h2&gt;func props: &#123; props.name &#125;&lt;&#x2F;h2&gt;
+      &lt;h2&gt;class props: &#123; this.props.name &#125;&lt;&#x2F;h2&gt;
     )
   &#125;
-  &#x2F;&#x2F; 2.类组件props
-  class Hello extends React.Component &#123;
-    render() &#123;
-      return (
-        &lt;h2&gt;class props: &#123; this.props.name &#125;&lt;&#x2F;h2&gt;
-      )
-    &#125;
-  &#125;
-  
-  ReactDOM.render(&lt;Hello name&#x3D;&quot;component props&quot; &#x2F;&gt;, document.querySelector(&#39;#root&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+&#125;
+
+ReactDOM.render(&lt;Hello name&#x3D;&quot;component props&quot; &#x2F;&gt;, document.querySelector(&#39;#root&#39;))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
 <li><p>特点：</p>
 <ul>
 <li>可以给组件穿任意类型的数据（数组、对象、jsx表达式、函数等）</li>
@@ -917,157 +935,179 @@ class Son extends React.Component &#123;
 </li>
 <li><p>子组件：通过props获取共享状态和操作共享状态</p>
 </li>
-<li><p>```react<br>class Parent extends React.Component {<br>  // 状态提升<br>  state = {</p>
-<pre><code>count: 1
-</code></pre>
-<p>  }<br>  render() {</p>
-<pre><code>return (
-  &lt;div&gt;
-    &lt;Child1 count=&#123; this.state.count &#125;&gt;&lt;/Child1&gt;
-    &lt;Child2 increment = &#123; this.increment&#125;&gt;&lt;/Child2&gt;
-  &lt;/div&gt;
-)
-</code></pre>
-<p>  }<br>  // 提供修改状态的方法<br>  increment = () =&gt; {</p>
-<pre><code>this.setState(&#123;
-  count: this.state.count + 1
-&#125;)
-</code></pre>
-<p>  }<br>}</p>
-<p>const Child1 = props =&gt; {<br>  return (</p>
-<pre><code>&lt;h2&gt;计数器: &#123; props.count &#125;&lt;/h2&gt;
-</code></pre>
-<p>  )<br>}</p>
-<p>const Child2 = props =&gt; {<br>  const increment = () =&gt; {</p>
-<pre><code>props.increment()
-</code></pre>
-<p>  }<br>  return (</p>
-<pre><code>&lt;button onClick=&#123; increment &#125;&gt;+1&lt;/button&gt;
-</code></pre>
-<p>  )</p>
-<p>}<br>  ReactDOM.render(</p>
-<pre><code>&lt;Parent/&gt;,
-document.querySelector(&quot;#root&quot;)
-</code></pre>
-<p>  )</p>
-<pre class="line-numbers language-none"><code class="language-none">
-
-#### 5.组件树传递数据
-
-- Context 设计目的是为了共享那些对于一个组件树而言是“全局”的数据，例如当前认证的用户、主题或首选语言。
-
-- 使用 context, 我们可以避免通过中间元素传递 props：
-
-- &#96;&#96;&#96;react
-  &#x2F;&#x2F; Context 可以让我们无须明确地传遍每一个组件，就能将值深入传递进组件树。
-  &#x2F;&#x2F; 为当前的 theme 创建一个 context（“light”为默认值）。
-  const ThemeContext &#x3D; React.createContext(&#39;light&#39;);
-  class App extends React.Component &#123;
-    render() &#123;
-      &#x2F;&#x2F; 使用一个 Provider 来将当前的 theme 传递给以下的组件树。
-      &#x2F;&#x2F; 无论多深，任何组件都能读取这个值。
-      &#x2F;&#x2F; 在这个例子中，我们将 “dark” 作为当前的值传递下去。
-      return (
-        &lt;ThemeContext.Provider value&#x3D;&quot;dark&quot;&gt;
-          &lt;Toolbar &#x2F;&gt;
-        &lt;&#x2F;ThemeContext.Provider&gt;
-      );
-    &#125;
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class Parent extends React.Component &#123;
+  &#x2F;&#x2F; 状态提升
+  state &#x3D; &#123;
+    count: 1
   &#125;
-  
-  &#x2F;&#x2F; 中间的组件再也不必指明往下传递 theme 了。
-  function Toolbar() &#123;
+  render() &#123;
     return (
       &lt;div&gt;
-        &lt;ThemedButton &#x2F;&gt;
+        &lt;Child1 count&#x3D;&#123; this.state.count &#125;&gt;&lt;&#x2F;Child1&gt;
+        &lt;Child2 increment &#x3D; &#123; this.increment&#125;&gt;&lt;&#x2F;Child2&gt;
       &lt;&#x2F;div&gt;
+    )
+  &#125;
+  &#x2F;&#x2F; 提供修改状态的方法
+  increment &#x3D; () &#x3D;&gt; &#123;
+    this.setState(&#123;
+      count: this.state.count + 1
+    &#125;)
+  &#125;
+&#125;
+
+const Child1 &#x3D; props &#x3D;&gt; &#123;
+  return (
+    &lt;h2&gt;计数器: &#123; props.count &#125;&lt;&#x2F;h2&gt;
+  )
+&#125;
+
+const Child2 &#x3D; props &#x3D;&gt; &#123;
+  const increment &#x3D; () &#x3D;&gt; &#123;
+    props.increment()
+  &#125;
+  return (
+    &lt;button onClick&#x3D;&#123; increment &#125;&gt;+1&lt;&#x2F;button&gt;
+  )
+
+&#125;
+  ReactDOM.render(
+    &lt;Parent&#x2F;&gt;,
+    document.querySelector(&quot;#root&quot;)
+  )<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h4 id="5-组件树传递数据"><a href="#5-组件树传递数据" class="headerlink" title="5.组件树传递数据"></a>5.组件树传递数据</h4><ul>
+<li><p>Context 设计目的是为了共享那些对于一个组件树而言是“全局”的数据，例如当前认证的用户、主题或首选语言。</p>
+</li>
+<li><p>使用 context, 我们可以避免通过中间元素传递 props：</p>
+</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">&#x2F;&#x2F; Context 可以让我们无须明确地传遍每一个组件，就能将值深入传递进组件树。
+&#x2F;&#x2F; 为当前的 theme 创建一个 context（“light”为默认值）。
+const ThemeContext &#x3D; React.createContext(&#39;light&#39;);
+class App extends React.Component &#123;
+  render() &#123;
+    &#x2F;&#x2F; 使用一个 Provider 来将当前的 theme 传递给以下的组件树。
+    &#x2F;&#x2F; 无论多深，任何组件都能读取这个值。
+    &#x2F;&#x2F; 在这个例子中，我们将 “dark” 作为当前的值传递下去。
+    return (
+      &lt;ThemeContext.Provider value&#x3D;&quot;dark&quot;&gt;
+        &lt;Toolbar &#x2F;&gt;
+      &lt;&#x2F;ThemeContext.Provider&gt;
     );
   &#125;
-  
-  class ThemedButton extends React.Component &#123;
-    &#x2F;&#x2F; 指定 contextType 读取当前的 theme context。
-    &#x2F;&#x2F; React 会往上找到最近的 theme Provider，然后使用它的值。
-    &#x2F;&#x2F; 在这个例子中，当前的 theme 值为 “dark”。
-    static contextType &#x3D; ThemeContext;
-    render() &#123;
-      return &lt;Button theme&#x3D;&#123;this.context&#125; &#x2F;&gt;;
-    &#125;
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+&#125;
+
+&#x2F;&#x2F; 中间的组件再也不必指明往下传递 theme 了。
+function Toolbar() &#123;
+  return (
+    &lt;div&gt;
+      &lt;ThemedButton &#x2F;&gt;
+    &lt;&#x2F;div&gt;
+  );
+&#125;
+
+class ThemedButton extends React.Component &#123;
+  &#x2F;&#x2F; 指定 contextType 读取当前的 theme context。
+  &#x2F;&#x2F; React 会往上找到最近的 theme Provider，然后使用它的值。
+  &#x2F;&#x2F; 在这个例子中，当前的 theme 值为 “dark”。
+  static contextType &#x3D; ThemeContext;
+  render() &#123;
+    return &lt;Button theme&#x3D;&#123;this.context&#125; &#x2F;&gt;;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
 <li><p>使用方法：</p>
 <ul>
-<li><p>1.React.createContext方法创建context</p>
-</li>
-<li><p>```react<br>const MyContext = React.createContext(defaultValue)<br>// 创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 Provider 中读取到当前的 context 值。<br>// 只有当组件所处的树中没有匹配到 Provider 时，其 defaultValue 参数才会生效。此默认值有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 undefined 传递给 Provider 的 value 时，消费组件的 defaultValue 不会生效<br>// or<br>const { Provider, Consumer } = React.creactContext()</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 2.使用Context.Provider提供数据
+<li>1.React.createContext方法创建context</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">const MyContext &#x3D; React.createContext(defaultValue)
+&#x2F;&#x2F; 创建一个 Context 对象。当 React 渲染一个订阅了这个 Context 对象的组件，这个组件会从组件树中离自身最近的那个匹配的 Provider 中读取到当前的 context 值。
+&#x2F;&#x2F; 只有当组件所处的树中没有匹配到 Provider 时，其 defaultValue 参数才会生效。此默认值有助于在不使用 Provider 包装组件的情况下对组件进行测试。注意：将 undefined 传递给 Provider 的 value 时，消费组件的 defaultValue 不会生效
+&#x2F;&#x2F; or
+const &#123; Provider, Consumer &#125; &#x3D; React.creactContext()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-- &#96;&#96;&#96;react
-  &lt;MyContext.Provider value&#x3D;&#123;&#x2F;* 某个值 *&#x2F;&#125; &#x2F;&gt;
-  &#x2F;&#x2F; or
-  &lt;Provider value&#x3D;&#123;&#125; &#x2F;&gt;
-  &#x2F;&#x2F; 每个 Context 对象都会返回一个 Provider React 组件，它允许消费组件订阅 context 的变化。
-  
-  &#x2F;&#x2F; Provider 接收一个 value 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
-  
-  &#x2F;&#x2F; 当 Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。Provider 及其内部 consumer 组件都不受制于 shouldComponentUpdate 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。
-  
-  <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<ul>
+<li>2.使用Context.Provider提供数据</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">&lt;MyContext.Provider value&#x3D;&#123;&#x2F;* 某个值 *&#x2F;&#125; &#x2F;&gt;
+&#x2F;&#x2F; or
+&lt;Provider value&#x3D;&#123;&#125; &#x2F;&gt;
+&#x2F;&#x2F; 每个 Context 对象都会返回一个 Provider React 组件，它允许消费组件订阅 context 的变化。
+
+&#x2F;&#x2F; Provider 接收一个 value 属性，传递给消费组件。一个 Provider 可以和多个消费组件有对应关系。多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据。
+
+&#x2F;&#x2F; 当 Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染。Provider 及其内部 consumer 组件都不受制于 shouldComponentUpdate 函数，因此当 consumer 组件在其祖先组件退出更新的情况下也能更新。
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
 <li><p>value提供为对象时注意事项：</p>
 </li>
 <li><p>因为 context 会使用参考标识（reference identity）来决定何时进行渲染，这里可能会有一些陷阱，当 provider 的父组件进行重渲染时，可能会在 consumers 组件中触发意外的渲染。举个例子，当每一次 Provider 重渲染时，以下的代码会重渲染所有下面的 consumers 组件，因为 <code>value</code> 属性总是被赋值为新的对象：</p>
 </li>
-<li><p>```react<br>class App extends React.Component {<br>  render() {</p>
-<pre><code>return (
-  &lt;MyContext.Provider value=&#123;&#123;something: 'something'&#125;&#125;&gt;
-    &lt;Toolbar /&gt;
-  &lt;/MyContext.Provider&gt;
-);
-</code></pre>
-<p>  }<br>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 为了防止这种情况，将 value 状态提升到父节点的 state 里：
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class App extends React.Component &#123;
+  render() &#123;
+    return (
+      &lt;MyContext.Provider value&#x3D;&#123;&#123;something: &#39;something&#39;&#125;&#125;&gt;
+        &lt;Toolbar &#x2F;&gt;
+      &lt;&#x2F;MyContext.Provider&gt;
+    );
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-- &#96;&#96;&#96;react
-  class App extends React.Component &#123;
-    constructor(props) &#123;
-      super(props);
-      this.state &#x3D; &#123;
-        value: &#123;something: &#39;something&#39;&#125;,
-      &#125;;
-    &#125;
-  
-    render() &#123;
-      return (
-        &lt;MyContext.Provider value&#x3D;&#123;this.state.value&#125;&gt;
-          &lt;Toolbar &#x2F;&gt;
-        &lt;&#x2F;MyContext.Provider&gt;
-      );
-    &#125;
-  &#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<ul>
+<li>为了防止这种情况，将 value 状态提升到父节点的 state 里：</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">class App extends React.Component &#123;
+  constructor(props) &#123;
+    super(props);
+    this.state &#x3D; &#123;
+      value: &#123;something: &#39;something&#39;&#125;,
+    &#125;;
+  &#125;
+
+  render() &#123;
+    return (
+      &lt;MyContext.Provider value&#x3D;&#123;this.state.value&#125;&gt;
+        &lt;Toolbar &#x2F;&gt;
+      &lt;&#x2F;MyContext.Provider&gt;
+    );
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
 <li><p>3.消费数据</p>
 <ul>
-<li><p>方式1：Class.contextType</p>
-</li>
-<li><p>```react<br> // 挂载在 class 上的 contextType 属性会被重赋值为一个由 React.createContext() 创建的 Context 对象。此属性能让你使用 this.context 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。<br>class MyClass extends React.Component {<br>  static contextType = MyContext;<br>  render() {</p>
-<pre><code>let value = this.context;
-/* 基于这个值进行渲染工作 */
-</code></pre>
-<p>  }<br>}</p>
-<pre class="line-numbers language-none"><code class="language-none">
-- 方式2：Context.Consumer
-
-- &#96;&#96;&#96;react
-  &#x2F;&#x2F; 一个 React 组件可以订阅 context 的变更，此组件可以让你在函数式组件中可以订阅 context。
-  
-  &#x2F;&#x2F; 这种方法需要一个函数作为子元素（function as a child）。这个函数接收当前的 context 值，并返回一个 React 节点。传递给函数的 value 值等价于组件树上方离这个 context 最近的 Provider 提供的 value 值。如果没有对应的 Provider，value 参数等同于传递给 createContext() 的 defaultValue。
-  &lt;MyContext.Consumer&gt;
-    &#123;value &#x3D;&gt; &#x2F;* 基于 context 值进行渲染*&#x2F;&#125;
-  &lt;&#x2F;MyContext.Consumer&gt;
-  &#x2F;&#x2F; or 
-  &lt;Consumer&gt;
-  	&#123;value &#x3D;&gt; &#x2F;* 基于 context 值进行渲染*&#x2F;&#125;
-  &lt;&#x2F;Consumer&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li>方式1：Class.contextType</li>
 </ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react"> &#x2F;&#x2F; 挂载在 class 上的 contextType 属性会被重赋值为一个由 React.createContext() 创建的 Context 对象。此属性能让你使用 this.context 来消费最近 Context 上的那个值。你可以在任何生命周期中访问到它，包括 render 函数中。
+class MyClass extends React.Component &#123;
+  static contextType &#x3D; MyContext;
+  render() &#123;
+    let value &#x3D; this.context;
+    &#x2F;* 基于这个值进行渲染工作 *&#x2F;
+  &#125;
+&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>方式2：Context.Consumer</li>
+</ul>
+<pre class="line-numbers language-react" data-language="react"><code class="language-react">&#x2F;&#x2F; 一个 React 组件可以订阅 context 的变更，此组件可以让你在函数式组件中可以订阅 context。
+
+&#x2F;&#x2F; 这种方法需要一个函数作为子元素（function as a child）。这个函数接收当前的 context 值，并返回一个 React 节点。传递给函数的 value 值等价于组件树上方离这个 context 最近的 Provider 提供的 value 值。如果没有对应的 Provider，value 参数等同于传递给 createContext() 的 defaultValue。
+&lt;MyContext.Consumer&gt;
+  &#123;value &#x3D;&gt; &#x2F;* 基于 context 值进行渲染*&#x2F;&#125;
+&lt;&#x2F;MyContext.Consumer&gt;
+&#x2F;&#x2F; or 
+&lt;Consumer&gt;
+	&#123;value &#x3D;&gt; &#x2F;* 基于 context 值进行渲染*&#x2F;&#125;
+&lt;&#x2F;Consumer&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 </li>
 </ul>
 </li>
@@ -1868,7 +1908,7 @@ document.querySelector(&quot;#root&quot;)
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">13.3k</span>
+                class="white-color">13.4k</span>
             
             
             
