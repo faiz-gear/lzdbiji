@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="d3">
+    <meta name="keywords" content="echarts">
     <meta name="description" content="压力、挑战，这一切消极的东西都是我能够取得成功的催化剂">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>d3相关笔记 | 前途</title>
+    <title>echarts学习笔记 | 前途</title>
     <link rel="icon" type="image/x-icon, image/vnd.microsoft.icon" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -265,12 +265,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">d3相关笔记</h1>
+                    <h1 class="description center-align post-title">echarts学习笔记</h1>
                 </div>
             </div>
         </div>
@@ -386,8 +386,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/d3js/">
-                                <span class="chip bg-color">d3js</span>
+                            <a href="/tags/echarts/">
+                                <span class="chip bg-color">echarts</span>
                             </a>
                         
                     </div>
@@ -411,7 +411,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-07-14
+                    2021-07-17
                 </div>
                 
 
@@ -425,14 +425,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    10 分
                 </div>
                 
 
@@ -455,191 +455,626 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="一-使用d3查询svg"><a href="#一-使用d3查询svg" class="headerlink" title="一.使用d3查询svg"></a>一.使用d3查询svg</h3><p>d3.select()、d3.selectAll()</p>
-<h3 id="二-使用d3设置svg中的属性"><a href="#二-使用d3设置svg中的属性" class="headerlink" title="二.使用d3设置svg中的属性"></a>二.使用d3设置svg中的属性</h3><p>d3.attr()</p>
-<p>常见的属性：</p>
-<ul>
-<li>id、class</li>
-<li>x，y，cx，cy（cx、cy是圆的xy坐标）</li>
-<li>fill（颜色填充color）、stroke（边框border）</li>
-<li>height、width、r（圆的半径）</li>
-<li>transform（translate、rotate、scale）</li>
-</ul>
-<h3 id="三-使用d3添加、删除svg元素"><a href="#三-使用d3添加、删除svg元素" class="headerlink" title="三.使用d3添加、删除svg元素"></a>三.使用d3添加、删除svg元素</h3><p>element.append()、element.remove()</p>
-<h3 id="四-d3的比例尺"><a href="#四-d3的比例尺" class="headerlink" title="四.d3的比例尺"></a>四.d3的比例尺</h3><h4 id="1-d3-scaleLinear-：线性比例尺"><a href="#1-d3-scaleLinear-：线性比例尺" class="headerlink" title="1.d3.scaleLinear()：线性比例尺"></a>1.d3.scaleLinear()：线性比例尺</h4><p>domain:：连续型 range：连续型</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> xScale <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleLinear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span><span class="token punctuation">[</span>min_d<span class="token punctuation">,</span> max_d<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 连续型</span>
-<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span> max<span class="token punctuation">)</span> <span class="token comment">// 连续型</span>
-
-<span class="token keyword">const</span> yScale <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleLinear</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> d3<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> <span class="token parameter">item</span> <span class="token operator">=></span> item<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> innerWidth<span class="token punctuation">]</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>d3.max(数据，回调：如何提取数据的值)：求出数据某一属性的最大值</p>
-<h4 id="2-d3-scaleBand-：序数比例尺"><a href="#2-d3-scaleBand-：序数比例尺" class="headerlink" title="2.d3.scaleBand()：序数比例尺"></a>2.d3.scaleBand()：序数比例尺</h4><p>domain：离散型 range：连续性</p>
-<p>可以理解为用domain将range分割</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> scale_b <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleBand</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">domian</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 离散型</span>
-<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 连续型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="3-d3-scaleOrdinal-：序数比例尺"><a href="#3-d3-scaleOrdinal-：序数比例尺" class="headerlink" title="3.d3.scaleOrdinal()：序数比例尺"></a>3.d3.scaleOrdinal()：序数比例尺</h4><p>domain：离散型 range：离散型</p>
-<p>可以简单理解为map映射</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> scaleO <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleOrdinal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 离散型</span>
-<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">20</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 离散型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>生成颜色比例尺</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> color <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleOrdinal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span>naiveKeys<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span>d3<span class="token punctuation">.</span>schemeSet2<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-
-
-<h4 id="4-d3-scaleQuantize-：量化比例尺-把连续性的值转换为离散型的值"><a href="#4-d3-scaleQuantize-：量化比例尺-把连续性的值转换为离散型的值" class="headerlink" title="4.d3.scaleQuantize()：量化比例尺(把连续性的值转换为离散型的值)"></a>4.d3.scaleQuantize()：量化比例尺(把连续性的值转换为离散型的值)</h4><p>domain：连续型 range：离散型</p>
-<p>可以理解为scaleBand的逆变换</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> scaleQ <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleQuantize</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 连续型</span>
-<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 离散型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="5-d3-scaleTime-：时间比例尺"><a href="#5-d3-scaleTime-：时间比例尺" class="headerlink" title="5.d3.scaleTime()：时间比例尺"></a>5.d3.scaleTime()：时间比例尺</h4><p>domain：连续型，是时间 range：连续，是刻度</p>
-<p>类似于d3.scaleLinear()线性比例尺，只不过输入域变成了时间轴</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> scaleT <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleTime</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">.</span><span class="token function">domain</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">2020</span><span class="token punctuation">,</span> <span class="token number">01</span><span class="token punctuation">,</span> <span class="token number">01</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Date</span><span class="token punctuation">(</span><span class="token number">2021</span><span class="token punctuation">,</span> <span class="token number">01</span><span class="token punctuation">,</span> <span class="token number">01</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 连续型</span>
-<span class="token punctuation">.</span><span class="token function">range</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token comment">// 连续型</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="6-颜色比例尺"><a href="#6-颜色比例尺" class="headerlink" title="6.颜色比例尺"></a>6.颜色比例尺</h4><p>d3提供了一些颜色比例尺，10就是10种颜色</p>
-<p>①Categorical系列——离散型颜色<br>d3.schemeCategory10 // 10就是10种颜色</p>
-<p><img src="/css/images/d3/category10.png" alt="category10"></p>
-<p>d3.schemeAccent</p>
-<p><img src="/css/images/d3/Accent.png" alt="Accent"></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 定义一个序数颜色比例尺</span>
-<span class="token keyword">const</span> color <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">scaleLinear</span><span class="token punctuation">(</span>d3<span class="token punctuation">.</span>schemeCategory10<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>②Diverging——连续型颜色（渐变颜色）</p>
-<p>方式一：d3.<strong>interpolateBrBG</strong>(<em>t</em>)——t =&gt; [0, 1]</p>
-<h3 id="五-Data-Join"><a href="#五-Data-Join" class="headerlink" title="五.Data Join"></a>五.Data Join</h3><h4 id="1-本质上是将数据与图元进行绑定"><a href="#1-本质上是将数据与图元进行绑定" class="headerlink" title="1.本质上是将数据与图元进行绑定"></a>1.本质上是将数据与图元进行绑定</h4><p>d3.selectAll(.class类名).data(data)</p>
-<h4 id="2-d3绑定数据的三个状态"><a href="#2-d3绑定数据的三个状态" class="headerlink" title="2.d3绑定数据的三个状态"></a>2.d3绑定数据的三个状态</h4><p>enter:</p>
-<ul>
-<li><p>有数据没有图元</p>
-</li>
-<li><p>d3会自动搞清楚哪些数据是新增的</p>
-</li>
-<li><p>根据新增的数据生成对应的图元</p>
-</li>
-<li><p>生成图元的占位，占位的内容需要通过append添加</p>
-</li>
-</ul>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> p <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token string">'.class'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">enter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">append</span><span class="token punctuation">(</span><span class="token string">'rect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token operator">...</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>update:</p>
-<ul>
-<li><p>有图元有数据</p>
-</li>
-<li><p>update作为实际可视化任务最常用的状态，经常被单独封装为一个函数</p>
-</li>
-<li><p>updateSelection.merge(enterSelection).attr().attr()</p>
-<ul>
-<li>将两个selection合并到一起操作</li>
-<li>enterSelection需要至少append()图元</li>
-</ul>
-</li>
-</ul>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">d3<span class="token punctuation">.</span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token punctuation">.</span>class<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">transition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">durantion</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'width'</span><span class="token punctuation">,</span> <span class="token parameter">d</span> <span class="token operator">=></span> <span class="token function">xScale</span><span class="token punctuation">(</span>d<span class="token punctuation">.</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>exit</p>
-<ul>
-<li><p>有图元没数据</p>
-</li>
-<li><p>d3会自动搞清楚哪些图元是不绑定数据的</p>
-</li>
-</ul>
- <pre class="line-numbers language-none"><code class="language-none">const p &#x3D; d3.selectAll(&#39;.class&#39;).data(data).exit().remove()<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="3-读取数据"><a href="#3-读取数据" class="headerlink" title="3.读取数据"></a>3.读取数据</h4><p>d3.csv(‘path/tp/data.csv’).then(res =&gt; {})</p>
-<h3 id="六-path"><a href="#六-path" class="headerlink" title="六.path"></a>六.path</h3><h4 id="1-path元素的形状是通过属性d来定义的"><a href="#1-path元素的形状是通过属性d来定义的" class="headerlink" title="1.path元素的形状是通过属性d来定义的"></a>1.path元素的形状是通过属性d来定义的</h4><h4 id="2-d3-Path生成器"><a href="#2-d3-Path生成器" class="headerlink" title="2.d3 Path生成器"></a>2.d3 Path生成器</h4><ul>
-<li>d3.line().x(d =&gt; xScale(xValue)).y(d =&gt; yScale(yValue)).curve(d3.curveCardinal.tension(0.5) —-用于折线图</li>
-<li>d3.geoPath().projection() —-用于地图</li>
-<li>d3.area() —-用于主题河流</li>
-<li>d3.arc().innerRadius().outerRadius() —-用于饼图</li>
-<li>d3.lineRadial().angle().radius() —-极坐标系版本的d3.line()</li>
-</ul>
-<h4 id="3-d3-line"><a href="#3-d3-line" class="headerlink" title="3.d3.line()"></a>3.d3.line()</h4><p>const line = d3.line().x(d =&gt; xScale(xValue)).y(d =&gt; yScale(yValue)).curve(d3.curveCardinal.tension(0.5)</p>
-<p>使用line:</p>
-<p>d3.select(‘path’).datum(data) // 给特定一个图元绑定一个数据，data是给一批图元绑定一批数据</p>
-<p>.attr(‘d’, line) // 给path配置line</p>
-<h3 id="七-interaction"><a href="#七-interaction" class="headerlink" title="七.interaction"></a>七.interaction</h3><h4 id="1-地图数据的表达-Topojson-amp-Geojson"><a href="#1-地图数据的表达-Topojson-amp-Geojson" class="headerlink" title="1.地图数据的表达: Topojson &amp; Geojson"></a>1.地图数据的表达: Topojson &amp; Geojson</h4><h4 id="2-json数据的读取"><a href="#2-json数据的读取" class="headerlink" title="2.json数据的读取"></a>2.json数据的读取</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">d3<span class="token punctuation">.</span><span class="token function">json</span><span class="token punctuation">(</span><span class="token string">'path/to/data.json'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span> <span class="token parameter">data</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>… … …<span class="token punctuation">&#125;</span> <span class="token punctuation">)</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="3-topojson转geojson"><a href="#3-topojson转geojson" class="headerlink" title="3.topojson转geojson"></a>3.topojson转geojson</h4><p>借助topojson.js库</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">geojson <span class="token operator">=</span> topojson<span class="token punctuation">.</span><span class="token function">feature</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> data<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>countries<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="4-地图数据的可视化"><a href="#4-地图数据的可视化" class="headerlink" title="4.地图数据的可视化"></a>4.地图数据的可视化</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> projection <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">geoNaturalEarth1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">const</span> pathGenerator <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">geoPath</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">projection</span><span class="token punctuation">(</span>projection<span class="token punctuation">)</span>
-<span class="token comment">// geo适应宽高</span>
-projection<span class="token punctuation">.</span><span class="token function">fitSize</span><span class="token punctuation">(</span><span class="token punctuation">[</span>innerWidth<span class="token punctuation">,</span> innerHeight<span class="token punctuation">]</span><span class="token punctuation">,</span> geojson<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// path使用geo</span>
-g<span class="token punctuation">.</span><span class="token function">selectAll</span><span class="token punctuation">(</span>path<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>geojson<span class="token punctuation">.</span>features<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'d'</span><span class="token punctuation">,</span>pathGenerator  <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="5-事件"><a href="#5-事件" class="headerlink" title="5.事件"></a>5.事件</h4><p>事件的设置对应于D3中的.on(‘eventName’, callBack) </p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">d3<span class="token punctuation">.</span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'click'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-  d3<span class="token punctuation">.</span><span class="token function">select</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>图元.on(事件类型, 触发动作) </p>
-<h4 id="6-d3-tip"><a href="#6-d3-tip" class="headerlink" title="6.d3-tip"></a>6.d3-tip</h4><p>tooltip库，自动在‘合适’的位置显示对话框</p>
-<h3 id="八-stack-堆叠"><a href="#八-stack-堆叠" class="headerlink" title="八.stack(堆叠)"></a>八.stack(堆叠)</h3><h4 id="1-d3-stack"><a href="#1-d3-stack" class="headerlink" title="1.d3.stack()"></a>1.d3.stack()</h4><p>本质上是d3.js提供的用于数据预处理的接口（生成堆叠数据）</p>
-<h4 id="2-语法"><a href="#2-语法" class="headerlink" title="2.语法"></a>2.语法</h4><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> stackData <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">stack</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>naiveKeys<span class="token punctuation">)</span> <span class="token comment">// 需要堆叠哪些字段的数据</span>
-	<span class="token punctuation">.</span><span class="token function">order</span><span class="token punctuation">(</span>d3<span class="token punctuation">.</span>stackOrderNone<span class="token punctuation">)</span> <span class="token comment">// 怎么排序 stackOrderNone：按原生数据的顺序 stackAscending: 升序排序 stackDescending: 降序排序</span>
-	<span class="token punctuation">(</span>naiveData<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="九-tree"><a href="#九-tree" class="headerlink" title="九.tree"></a>九.tree</h3><h4 id="1-层级数据预处理d3-hierarchy"><a href="#1-层级数据预处理d3-hierarchy" class="headerlink" title="1.层级数据预处理d3.hierarchy"></a>1.层级数据预处理d3.hierarchy</h4><ul>
-<li>d3.hierarchy</li>
+                <h3 id="一、柱状图（type为bar）"><a href="#一、柱状图（type为bar）" class="headerlink" title="一、柱状图（type为bar）"></a>一、柱状图（type为bar）</h3><h4 id="1-数据格式"><a href="#1-数据格式" class="headerlink" title="1.数据格式"></a>1.数据格式</h4><p>一维数组</p>
+<h4 id="2-xAxis和yAxis"><a href="#2-xAxis和yAxis" class="headerlink" title="2.xAxis和yAxis"></a>2.xAxis和yAxis</h4><p>type为category时，需要指定data</p>
+<p>type为value时，data在series中指定</p>
+<h4 id="3-常见效果"><a href="#3-常见效果" class="headerlink" title="3.常见效果"></a>3.常见效果</h4><ul>
+<li><p>标记：最大值、最小值、平均值</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">markPoint：<span class="token punctuation">&#123;</span>
+  data<span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      type<span class="token operator">:</span> <span class="token string">'max'</span>，
+      name<span class="token operator">:</span> <span class="token string">'最大值'</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#123;</span>
+      type<span class="token operator">:</span> <span class="token string">'min'</span><span class="token punctuation">,</span>
+      name<span class="token operator">:</span> <span class="token string">'最小值'</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  markLine<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    data<span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token punctuation">&#123;</span>
+        type<span class="token operator">:</span> <span class="token string">'average'</span>，
+        name<span class="token operator">:</span> <span class="token string">'平均值'</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">]</span>
+  <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
 </ul>
 <ul>
-<li>保持数据的原始结构，并将输入层级数据转换成D3中的hierarcy对象(result instanceof d3.hierarchy)，同时引入: </li>
-<li>height （* 不是逐层递减）、depth、children (原始结构) parent、（data 原始数据的映射）</li>
+<li><p>显示：</p>
+<p>label：数值显示</p>
+<p>barWidth： 柱宽度</p>
+<p>横向柱状图：xAxis和yAxis配置互换</p>
+</li>
 </ul>
+<h3 id="二、通用配置"><a href="#二、通用配置" class="headerlink" title="二、通用配置"></a>二、通用配置</h3><ul>
+<li>title标题<ul>
+<li>文字样式：textStyle</li>
+<li>标题边框：borderWidth、borderColor、borderRadius</li>
+<li>标题位置：left、top、right、bottom</li>
+</ul>
+</li>
+<li>tooltip提示框组件<ul>
+<li>触发类型：trigger<ul>
+<li>item</li>
+<li>axis</li>
+</ul>
+</li>
+<li>触发时机：triggerOn<ul>
+<li>mouseover</li>
+<li>click</li>
+</ul>
+</li>
+<li>格式化：formatter<ul>
+<li>字符串模板</li>
+<li>回调函数（参数：arg）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>toolbox工具栏（导出图片、数据视图、数据区域缩放、重置、动态类型切换五个工具）<ul>
+<li>feature（显示工具栏按钮）<ul>
+<li>savaAsImage（导出图片）</li>
+<li>dataView（数据视图）</li>
+<li>dataZoom（数据区域缩放）</li>
+<li>restore（重置）</li>
+<li>magicType（动态类型切换）：如magicType： { type: [‘bar’, ‘line’]}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>legend图例（用于筛选系列，需要和series配合使用）<ul>
+<li>legend中的data是一个数组</li>
+<li>legend中的data的值需要和series数组中某组数据的name值一致</li>
+</ul>
+</li>
+</ul>
+<h3 id="三、折线图（type为line）"><a href="#三、折线图（type为line）" class="headerlink" title="三、折线图（type为line）"></a>三、折线图（type为line）</h3><h4 id="1-数据格式-1"><a href="#1-数据格式-1" class="headerlink" title="1.数据格式"></a>1.数据格式</h4><p>一维数组</p>
+<h4 id="2-常用效果"><a href="#2-常用效果" class="headerlink" title="2.常用效果"></a>2.常用效果</h4><ul>
+<li>标记：最大值、最小值、平均值、标注区间<ul>
+<li>markPoint</li>
+<li>markLine</li>
+<li>markArea</li>
+</ul>
+</li>
+<li>线条控制：平滑、风格<ul>
+<li>smooth、lineStyle </li>
+</ul>
+</li>
+<li>填充风格<ul>
+<li>areaStyle</li>
+</ul>
+</li>
+<li>紧挨y轴边缘（设置在xAxis）<ul>
+<li>boundaryGap</li>
+</ul>
+</li>
+<li>缩放：脱离0值比例<ul>
+<li>scale：true</li>
+</ul>
+</li>
+<li>堆叠图<ul>
+<li>stack：all</li>
+<li>可以和areaStyle配合使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="四、散点图（type为scatter）"><a href="#四、散点图（type为scatter）" class="headerlink" title="四、散点图（type为scatter）"></a>四、散点图（type为scatter）</h3><h4 id="1-数据格式-2"><a href="#1-数据格式-2" class="headerlink" title="1.数据格式"></a>1.数据格式</h4><p>二维数组</p>
+<h4 id="2-基本的散点图"><a href="#2-基本的散点图" class="headerlink" title="2.基本的散点图"></a>2.基本的散点图</h4><ul>
+<li>x轴和y轴type都是value</li>
+<li>x轴和y轴的数据，是一个二维数组</li>
+<li>type为scatter</li>
+</ul>
+<h4 id="3-常用效果"><a href="#3-常用效果" class="headerlink" title="3.常用效果"></a>3.常用效果</h4><ul>
+<li>气泡图效果<ul>
+<li>散点大小不同：symbolSize</li>
+<li>散点的颜色不同：itemStyle.color</li>
+</ul>
+</li>
+<li>涟漪动画效果<ul>
+<li>type: effectScatter</li>
+<li>showEffectOn: ‘emphasis’ 鼠标移入时才显示涟漪效果，默认值是render（渲染就显示涟漪效果）</li>
+<li>rippleEffect: { scale: 10} 散点涟漪效果的范围</li>
+</ul>
+</li>
+</ul>
+<h3 id="五、直角坐标系的常用配置"><a href="#五、直角坐标系的常用配置" class="headerlink" title="五、直角坐标系的常用配置"></a>五、直角坐标系的常用配置</h3><p>直角坐标系的图表：柱状图（bar）、折线图（line）、散点图（scatter）</p>
 <ul>
-<li>•d3.hierarchy可作为一个‘中间结果’，继续输入到更多D3.js提供的数据预处理接口中</li>
+<li>grid网格（控制直角坐标系的布局和大小，x轴和y轴就是在grid的基础上进行绘制的）<ul>
+<li>显示gird<ul>
+<li>show</li>
 </ul>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> root <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">hierarchy</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="2-层级数据预处理d3-tree"><a href="#2-层级数据预处理d3-tree" class="headerlink" title="2.层级数据预处理d3.tree()"></a>2.层级数据预处理d3.tree()</h4><ul>
-<li><p>d3.tree().size([innerHeight, innerWidth])</p>
 </li>
-<li><p>返回一个函数</p>
-</li>
-<li><p>接受参数为d3.hierarchy</p>
-</li>
-<li><p>函数会根据设置的size将树形结构的每个节点映射到空间中‘合适’的位置（添加横纵坐标节点）</p>
-</li>
+<li>grid的边框<ul>
+<li>borderWidth、borderColor</li>
 </ul>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">root <span class="token operator">=</span> d3<span class="token punctuation">.</span><span class="token function">tree</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">[</span>innerHeight<span class="token punctuation">,</span> innerWidth<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h4 id="3-root-links-和-d3-linkHorizontal"><a href="#3-root-links-和-d3-linkHorizontal" class="headerlink" title="3.root.links()和 d3.linkHorizontal()"></a>3.root.links()和 d3.linkHorizontal()</h4><ul>
-<li><p>root.links()返回树形结构中存在的所有‘链接’(带有source和target树形)，作为data join的参数，供后续设置三次贝塞尔曲线的x和y使用</p>
 </li>
-<li><p>d3.linkHorizontal()生成一个从source到target的三次贝塞尔曲线。.x(…)与.y(…)分别表示如何在source与target中取横纵坐标值。默认生成的是纵向的树形图，横纵坐标值取相反的值将图形翻转过来</p>
+<li>grid的位置和大小<ul>
+<li>left</li>
+<li>top</li>
+<li>right</li>
+<li>bottom</li>
+</ul>
 </li>
 </ul>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">g<span class="token punctuation">.</span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span><span class="token function">links</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"path"</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"fill"</span><span class="token punctuation">,</span> <span class="token string">"none"</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"stroke"</span><span class="token punctuation">,</span> <span class="token string">"black"</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"stroke-width"</span><span class="token punctuation">,</span> <span class="token number">1.5</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">"d"</span><span class="token punctuation">,</span> d3<span class="token punctuation">.</span><span class="token function">linkHorizontal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token parameter">d</span> <span class="token operator">=></span> d<span class="token punctuation">.</span>y<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">y</span><span class="token punctuation">(</span><span class="token parameter">d</span> <span class="token operator">=></span> d<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="4-root-descendants"><a href="#4-root-descendants" class="headerlink" title="4.root.descendants()"></a>4.root.descendants()</h4><ul>
-<li>root.descendants()返回层级结构中的所有节点，广度优先（层次优先），返回的内容本质上是对象的数组</li>
+</li>
+<li>axis坐标轴（分为x轴和y轴）<ul>
+<li>坐标轴类型type<ul>
+<li>value：数值周，自动会从目标数据中读取数据</li>
+<li>category：类目轴，该类型必须通过data设置类目数据</li>
 </ul>
- <pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">g<span class="token punctuation">.</span><span class="token function">selectAll</span><span class="token punctuation">(</span><span class="token string">'text'</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">data</span><span class="token punctuation">(</span>root<span class="token punctuation">.</span><span class="token function">descendants</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'text'</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token parameter">d</span> <span class="token operator">=></span> d<span class="token punctuation">.</span>data<span class="token punctuation">.</span>name<span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'x'</span><span class="token punctuation">,</span> <span class="token parameter">d</span> <span class="token operator">=></span> d<span class="token punctuation">.</span>children <span class="token operator">?</span> d<span class="token punctuation">.</span>y <span class="token operator">-</span> <span class="token number">8</span> <span class="token operator">:</span> d<span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token number">8</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token parameter">d</span> <span class="token operator">=></span> d<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token number">5</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'font-size'</span><span class="token punctuation">,</span> <span class="token string">'0.8em'</span><span class="token punctuation">)</span>
-	<span class="token punctuation">.</span><span class="token function">attr</span><span class="token punctuation">(</span><span class="token string">'text-anchor'</span><span class="token punctuation">,</span> <span class="token parameter">d</span> <span class="token operator">=></span> d<span class="token punctuation">.</span>children <span class="token operator">?</span> <span class="token string">'end'</span> <span class="token operator">:</span> <span class="token string">'start'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>  ​</p>
+</li>
+<li>显示位置position<ul>
+<li>xAxis：可取值为top或bottom</li>
+<li>yAxis：可取值为left或right</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>区域缩放dataZoom<ul>
+<li>dataZoom用于区域缩放，对数据范围过滤，x轴和y轴都可以拥有。dataZoom是一个数组，可以配置多个区域缩放器</li>
+<li>类型type<ul>
+<li>slider：滑块控制缩放</li>
+<li>inside：内置，依靠鼠标滚轮或者双指缩放</li>
+</ul>
+</li>
+<li>指明产生作用的轴<ul>
+<li>xAxisIndex：设置缩放组件控制的是哪个x轴，一般写0即可</li>
+<li>yAxisIndex：设置缩放组件控制的是哪个y轴，一般写0即可</li>
+</ul>
+</li>
+<li>指明初始状态的缩放情况<ul>
+<li>start：数据窗口范围的起始百分比</li>
+<li>end：数据窗口范围的结束百分比</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="六、饼图（type为pie）"><a href="#六、饼图（type为pie）" class="headerlink" title="六、饼图（type为pie）"></a>六、饼图（type为pie）</h3><h4 id="1-数据格式-3"><a href="#1-数据格式-3" class="headerlink" title="1.数据格式"></a>1.数据格式</h4><p>json数据：data: [{name: ‘京东’，value: ‘9000’}]</p>
+<h4 id="2-基本的饼图"><a href="#2-基本的饼图" class="headerlink" title="2.基本的饼图"></a>2.基本的饼图</h4><ul>
+<li>数据是json数据格式</li>
+<li>type为pie</li>
+<li>无须配置xAxis和yAxis</li>
+</ul>
+<h4 id="3-饼图常见效果"><a href="#3-饼图常见效果" class="headerlink" title="3.饼图常见效果"></a>3.饼图常见效果</h4><ul>
+<li>显示数值<ul>
+<li>lable.formatter</li>
+</ul>
+</li>
+<li>圆环<ul>
+<li>设置两个半径 radius：[‘50%’, ‘70%’] 分别是内半径和外半径</li>
+</ul>
+</li>
+<li>南丁格尔图<ul>
+<li>roseType：’radius’</li>
+</ul>
+</li>
+<li>选中效果<ul>
+<li>选中模式 selectMode：single（可选中单个）\multiple（可选中多个）</li>
+<li>选中偏移量 selectOffset：30</li>
+</ul>
+</li>
+</ul>
+<h3 id="七、地图（type：map）"><a href="#七、地图（type：map）" class="headerlink" title="七、地图（type：map）"></a>七、地图（type：map）</h3><h4 id="1-矢量地图的实现步骤"><a href="#1-矢量地图的实现步骤" class="headerlink" title="1.矢量地图的实现步骤"></a>1.矢量地图的实现步骤</h4><ul>
+<li>Echarts最基本的代码结构<ul>
+<li>引入js文件</li>
+<li>带宽高的DOM容器</li>
+<li>init初始化对象</li>
+<li>setOption设置option</li>
+</ul>
+</li>
+<li>准备中国的矢量地图json文件（<a target="_blank" rel="noopener" href="http://datav.aliyun.com/tools/atlas/index.html#&amp;lat=30.332329214580188&amp;lng=106.72278672066881&amp;zoom=3.5%EF%BC%89">http://datav.aliyun.com/tools/atlas/index.html#&amp;lat=30.332329214580188&amp;lng=106.72278672066881&amp;zoom=3.5）</a></li>
+<li>使用ajax获取json<ul>
+<li>$.get(‘json/map/china.json’, function(chinaJson){})</li>
+</ul>
+</li>
+<li>往echarts全局对象注册地图的json数据<ul>
+<li>echarts.registerMap(‘chinaMap’, chinaJson)</li>
+</ul>
+</li>
+<li>在geo下设置<ul>
+<li>type:’map’</li>
+<li>map:’chinaMap’</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-常用配置"><a href="#2-常用配置" class="headerlink" title="2.常用配置"></a>2.常用配置</h4><ul>
+<li>缩放拖动<ul>
+<li>roam：true</li>
+</ul>
+</li>
+<li>名称显示<ul>
+<li>label</li>
+</ul>
+</li>
+<li>初始缩放比例<ul>
+<li>zoom：2（2倍）</li>
+</ul>
+</li>
+<li>地图中心点<ul>
+<li>center</li>
+</ul>
+</li>
+</ul>
+<h4 id="3-常见效果-1"><a href="#3-常见效果-1" class="headerlink" title="3.常见效果"></a>3.常见效果</h4><ul>
+<li><p>不同城市颜色不同（如空气质量）</p>
+<ol>
+<li><p>显示基本的中国地图</p>
+</li>
+<li><p>城市的空气质量数据设置给series（此处的数据必须是[{name: cityName, value: ‘’}]的格式，其中name属性必须和省份名一致）</p>
+</li>
+<li><p>将series下的数据与geo关联起来</p>
+<p>设置type: ‘map’，geoIndex:0</p>
+</li>
+<li><p>结合visualMap配合使用</p>
+<p>visualMap: {min: 0, max: 40, range: { color: [‘white’, ‘red’]}}</p>
+</li>
+</ol>
+</li>
+<li><p>地图和散点图结合</p>
+<ol>
+<li><p>给series下配置散点图对象</p>
+</li>
+<li><p>准备好散点数据，设置给新对象的data（二维数组，地图坐标）</p>
+</li>
+<li><p>配置新对象的type为effectScatter</p>
+</li>
+<li><p>让散点图使用地图坐标系统</p>
+<p>coordinateSystem: ‘geo’</p>
+</li>
+<li><p>让涟漪的效果更加明显</p>
+<p>rippleEffect：{ scale：10 }</p>
+</li>
+</ol>
+</li>
+</ul>
+<h3 id="八、雷达图（type：radar）"><a href="#八、雷达图（type：radar）" class="headerlink" title="八、雷达图（type：radar）"></a>八、雷达图（type：radar）</h3><h4 id="1-实现步骤"><a href="#1-实现步骤" class="headerlink" title="1.实现步骤"></a>1.实现步骤</h4><ul>
+<li>echarts最基本的代码结构</li>
+<li>定义各个维度的最大值（在radar属性下）<ul>
+<li>indicator：[{name: ‘易用性’, max: 100]}]</li>
+</ul>
+</li>
+<li>准备具体产品的数据<ul>
+<li>在series下设置data：[{name: ‘华为手机’, value: [80, 80, 90, 95, 85]}</li>
+</ul>
+</li>
+<li>设置图表类型<ul>
+<li>在series下设置type：radar</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-常用配置-1"><a href="#2-常用配置-1" class="headerlink" title="2.常用配置"></a>2.常用配置</h4><ul>
+<li>显示数值:<ul>
+<li>label</li>
+</ul>
+</li>
+<li>区域面积（阴影）<ul>
+<li>areaStyle</li>
+</ul>
+</li>
+<li>绘制类型<ul>
+<li>shape: ‘circle’ 默认值 polygon</li>
+</ul>
+</li>
+</ul>
+<h3 id="九、仪表盘（type：guage）"><a href="#九、仪表盘（type：guage）" class="headerlink" title="九、仪表盘（type：guage）"></a>九、仪表盘（type：guage）</h3><h4 id="1-实现步骤-1"><a href="#1-实现步骤-1" class="headerlink" title="1.实现步骤"></a>1.实现步骤</h4><ul>
+<li>echarts最基本的代码结构</li>
+<li>准备数据，设置给series下的data<ul>
+<li>data: [{value: 97}]</li>
+</ul>
+</li>
+<li>图标类型<ul>
+<li>在series下设置type：guage</li>
+</ul>
+</li>
+</ul>
+<h4 id="2-常用效果-1"><a href="#2-常用效果-1" class="headerlink" title="2.常用效果"></a>2.常用效果</h4><ul>
+<li>数值范围<ul>
+<li>max</li>
+<li>min</li>
+</ul>
+</li>
+<li>多个指针<ul>
+<li>增加series下data数组中的元素</li>
+</ul>
+</li>
+<li>多个指针颜色差异<ul>
+<li>itemStyle</li>
+</ul>
+</li>
+</ul>
+<h3 id="十、主题"><a href="#十、主题" class="headerlink" title="十、主题"></a>十、主题</h3><h4 id="1-内置主题"><a href="#1-内置主题" class="headerlink" title="1.内置主题"></a>1.内置主题</h4><ul>
+<li><p>echarts中默认内置了两套主题：light、dark</p>
+</li>
+<li><p>在初始化对象方法中init中可以指明</p>
+<p>var chart = echarts.init(dom, ‘light’)</p>
+<p>var chart = echarts.init(dom, ‘dark’)</p>
+</li>
+</ul>
+<h4 id="2-自定义主题"><a href="#2-自定义主题" class="headerlink" title="2.自定义主题"></a>2.自定义主题</h4><ul>
+<li>1.在官网主题编辑器中编辑主题</li>
+<li>2.下载主题js文件</li>
+<li>3.引入主题js文件</li>
+<li>4.在init方法中使用主题</li>
+</ul>
+<h3 id="十一、调色盘"><a href="#十一、调色盘" class="headerlink" title="十一、调色盘"></a>十一、调色盘</h3><h4 id="1-它是一组颜色，图形、系列会自动从其中选择颜色"><a href="#1-它是一组颜色，图形、系列会自动从其中选择颜色" class="headerlink" title="1.它是一组颜色，图形、系列会自动从其中选择颜色"></a>1.它是一组颜色，图形、系列会自动从其中选择颜色</h4><ul>
+<li><p>主题调色盘（主题js文件中全局注册的color）</p>
+</li>
+<li><p>全局调色盘</p>
+<p>options：{</p>
+<p>​    color： [‘red’, ‘green’, ‘blue’]</p>
+<p>}</p>
+</li>
+<li><p>局部调色盘</p>
+<p>series: [{</p>
+<p>​    type: ‘bar’,</p>
+<p>​    color: [‘red’, ‘green’, ‘blue’]</p>
+<p>}]</p>
+</li>
+</ul>
+<h4 id="2-调色盘的作用遵循就近原则"><a href="#2-调色盘的作用遵循就近原则" class="headerlink" title="2.调色盘的作用遵循就近原则"></a>2.调色盘的作用遵循就近原则</h4><h4 id="3-颜色渐变"><a href="#3-颜色渐变" class="headerlink" title="3.颜色渐变"></a>3.颜色渐变</h4><ul>
+<li><p>线性渐变</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">itemStyle<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  color<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    type<span class="token operator">:</span> <span class="token string">'linear'</span><span class="token punctuation">,</span>
+      x<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">// 在图元中的初始x位置</span>
+      y<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">// 在图元中的初始y位置</span>
+      x2<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+      y2<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token comment">// 1代表到底部，0.5在中间</span>
+        colorStops<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span>
+          offset<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> color<span class="token operator">:</span> <span class="token string">'red'</span> <span class="token comment">// 0%处的颜色 </span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span><span class="token punctuation">&#123;</span>
+          offset<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> color<span class="token operator">:</span> <span class="token string">'blue'</span> <span class="token comment">// 100%处的颜色</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>径向渐变</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">itemStyle<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+  color<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    type<span class="token operator">:</span> <span class="token string">'radial'</span><span class="token punctuation">,</span>
+      x<span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span> 
+      y<span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span>
+      r<span class="token operator">:</span> <span class="token number">0.5</span><span class="token punctuation">,</span> <span class="token comment">// 扩散的半径</span>
+        colorStops<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">&#123;</span>
+          offset<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> color<span class="token operator">:</span> <span class="token string">'red'</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>
+          offset<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> color<span class="token operator">:</span> <span class="token string">'blue'</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">]</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="十二、样式"><a href="#十二、样式" class="headerlink" title="十二、样式"></a>十二、样式</h3><ul>
+<li>直接样式<ul>
+<li>itemStyle、textStyle、lineStyle、areaStyle、label</li>
+</ul>
+</li>
+<li>高亮样式<ul>
+<li>在emphasis中包裹itemStyle、textStyle、lineStyle、areaStyle、label</li>
+</ul>
+</li>
+<li>优先级高，会覆盖主题中、调色盘的效果</li>
+</ul>
+<h3 id="十三、自适应"><a href="#十三、自适应" class="headerlink" title="十三、自适应"></a>十三、自适应</h3><p>当浏览器的大小发生变化的时候，如果想让图表也能随之适配变化</p>
+<ul>
+<li><p>1.监听窗口大小变化事件</p>
+</li>
+<li><p>2.在事件处理函数中调用echarts实例对象的resize方法即可</p>
+<p>window.onresize = myChart.resize</p>
+</li>
+</ul>
+<h3 id="十四、加载动画"><a href="#十四、加载动画" class="headerlink" title="十四、加载动画"></a>十四、加载动画</h3><p>echarts已经内置好了加载数据的动画，我们只需要在合适的时机显示或者隐藏即可</p>
+<ul>
+<li><p>显示加载动画</p>
+<p>mCharts.showLoading()</p>
+</li>
+<li><p>隐藏加载动画</p>
+<p>mCharts.hideLoading()</p>
+</li>
+</ul>
+<h3 id="十五、增量动画"><a href="#十五、增量动画" class="headerlink" title="十五、增量动画"></a>十五、增量动画</h3><ul>
+<li>增量动画的实现方式<ul>
+<li>mCharts.setOption<ul>
+<li>所有数据的更新都通过setOption实现</li>
+<li>不用考虑数据到底产生了哪些变化</li>
+<li>echarts会找到两组数据之间的差异然后通过合适的动画取实现数据的变化</li>
+<li>新旧option的关系并不是相互覆盖的关系，而是相互整合的关系</li>
+<li>我们在设置新的option的时候，只需要考虑到变化的部分就可以</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="十六、动画配置项"><a href="#十六、动画配置项" class="headerlink" title="十六、动画配置项"></a>十六、动画配置项</h3><ul>
+<li><p>开启动画</p>
+<ul>
+<li>animation：true</li>
+</ul>
+</li>
+<li><p>动画时长</p>
+<ul>
+<li>animationDuration：5000</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">animationDuration： <span class="token keyword">function</span>（arg） <span class="token punctuation">&#123;</span>
+  <span class="token comment">// 这里的arg是所有需要动画效果的图元的索引，会根据不同形式的图元元素进行分组</span>
+  <span class="token keyword">return</span> arg <span class="token operator">*</span> <span class="token number">10</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>缓动动画</p>
+<ul>
+<li>animationEasing: ‘bounceOut’</li>
+</ul>
+</li>
+<li><p>动画阈值</p>
+<ul>
+<li>animationThreshold： 8</li>
+<li>单中形式的元素数量大于这个阈值会关闭动画</li>
+</ul>
+</li>
+</ul>
+<h3 id="十七、全局Echarts对象常用方法"><a href="#十七、全局Echarts对象常用方法" class="headerlink" title="十七、全局Echarts对象常用方法"></a>十七、全局Echarts对象常用方法</h3><ul>
+<li><p>init方法</p>
+<ul>
+<li>初始化Echarts实例对象</li>
+<li>使用主题（第二个参数）</li>
+</ul>
+</li>
+<li><p>registerTheme方法</p>
+<ul>
+<li>注册主题</li>
+<li>只有注册过的主题，才能在init方法中使用该主题</li>
+</ul>
+</li>
+<li><p>registerMap方法</p>
+<ul>
+<li><p>注册地图数据</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">$<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'json/map/china.json'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">ChinaJson</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+  echarts<span class="token punctuation">.</span><span class="token function">registerMap</span><span class="token punctuation">(</span><span class="token string">'china'</span><span class="token punctuation">,</span> chinaJson<span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>geo组件使用地图数据</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">var</span> option <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  geo<span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    type<span class="token operator">:</span> <span class="token string">'map'</span><span class="token punctuation">,</span>
+    map<span class="token operator">:</span> <span class="token string">'china'</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+</li>
+<li><p>connect方法</p>
+<ul>
+<li>一个页面中可以有多个独立的图表</li>
+<li>每一个图表对应一个Echarts实例对象</li>
+<li>connect可以实现多图关联，传入联动目标为Echarts实例对象，支持数组<ul>
+<li>保存图片的自动拼接（saveAsImage）</li>
+<li>刷新按钮</li>
+<li>重置按钮</li>
+<li>提示框联动、图例选择、数据范围修改等等</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="十八、echartsInstance实例常用方法"><a href="#十八、echartsInstance实例常用方法" class="headerlink" title="十八、echartsInstance实例常用方法"></a>十八、echartsInstance实例常用方法</h3><ul>
+<li><p>setOption方法</p>
+<ul>
+<li>设置或修改图表实例的配置项以及数据</li>
+<li>多次调用setOption方法<ul>
+<li>合并新旧配置</li>
+<li>增量动画</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>resize方法</p>
+<ul>
+<li>重新计算和绘制图表</li>
+<li>一般和window对象的resize事件结合使用<ul>
+<li>window.onresize = mEcharts.resize</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>on\off方法</p>
+<ul>
+<li>绑定或者解绑事件处理函数</li>
+<li>鼠标事件<ul>
+<li>常见事件：click、dbclick、mousedown、mousemove、mouseup等</li>
+</ul>
+</li>
+<li>Echarts事件<ul>
+<li>常见事件：legendselectchanged、datazoom、pieselectchanged、ma’pselectchanged</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>dispatchAction</p>
+<ul>
+<li><p>触发某些行为</p>
+</li>
+<li><p>使用代码模拟用户的行为</p>
+</li>
+</ul>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">mCharts<span class="token punctuation">.</span><span class="token function">dispatchAction</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  type<span class="token operator">:</span> <span class="token string">'hightlight'</span><span class="token punctuation">,</span> <span class="token comment">// 事件类型</span>
+  seriesIndex<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token comment">// 图表索引(系列)</span>
+  dataIndex<span class="token operator">:</span> <span class="token number">1</span> <span class="token comment">// 图表中哪一项高亮</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>clear</p>
+<ul>
+<li>清空当前实例，会移除实例中所有的组件和图表</li>
+<li>清空之后可以再次setOption</li>
+</ul>
+</li>
+<li><p>dispose方法</p>
+<ul>
+<li>销毁实例</li>
+<li>销毁后实例无法再被使用</li>
+</ul>
+</li>
+</ul>
+<h3 id="十九、websocket的基本使用"><a href="#十九、websocket的基本使用" class="headerlink" title="十九、websocket的基本使用"></a>十九、websocket的基本使用</h3><ul>
+<li><p>后端</p>
+<ul>
+<li><p>安装包</p>
+<ul>
+<li>npm i ws</li>
+</ul>
+</li>
+<li><p>创建对象</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> webSocket <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'ws'</span><span class="token punctuation">)</span>
+<span class="token keyword">const</span> wss <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket<span class="token punctuation">.</span>server</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+  port<span class="token operator">:</span> <span class="token string">'8080'</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>监听事件</p>
+<ul>
+<li><p>连接事件</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">wss<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'connection'</span><span class="token punctuation">,</span> <span class="token parameter">client</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'有客户端连接'</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li>
+<li><p>接受数据事件</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript">wss<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'connection'</span><span class="token punctuation">,</span> <span class="token parameter">client</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'有客户端连接'</span><span class="token punctuation">)</span>
+  client<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'message'</span><span class="token punctuation">,</span> <span class="token parameter">msg</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'客户端发送数据过来了'</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+<li><p>发送数据</p>
+<ul>
+<li>client.send(‘hello socket from back-end’)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>前端</p>
+<ul>
+<li><p>创建对象</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> ws <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">'ws://localhost:8080'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<li><p>监听事件</p>
+<ul>
+<li>连接成功事件<ul>
+<li>ws.onopen = () =&gt; {}</li>
+</ul>
+</li>
+<li>接受数据事件<ul>
+<li>ws.onmessage = msg =&gt; {}</li>
+</ul>
+</li>
+<li>关闭连接事件<ul>
+<li>ws.onclose = () =&gt; {}</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>发送数据</p>
+<ul>
+<li>ws.send</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                 
             </div>
@@ -666,7 +1101,7 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2021/07/14/d3/">http://example.com/2021/07/14/d3/</a>
+                    <a href="http://example.com/2021/07/17/echarts/">http://example.com/2021/07/17/echarts/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -704,8 +1139,8 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/d3js/">
-                                    <span class="chip bg-color">d3js</span>
+                                <a href="/tags/echarts/">
+                                    <span class="chip bg-color">echarts</span>
                                 </a>
                             
                         </div>
@@ -1147,13 +1582,13 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/07/17/echarts/">
+                <a href="/2021/08/25/react/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="echarts学习笔记">
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="react学习笔记">
                         
-                        <span class="card-title">echarts学习笔记</span>
+                        <span class="card-title">react学习笔记</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1164,14 +1599,14 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021/07/17
+                            <i class="far fa-clock fa-fw icon-date"></i>2021/08/25
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%89%8D%E7%AB%AF%E5%8F%AF%E8%A7%86%E5%8C%96%E5%BA%93/" class="post-category">
-                                    前端可视化库
+                            <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6/" class="post-category">
+                                    前端框架
                                 </a>
                             
                             
@@ -1181,8 +1616,8 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/echarts/">
-                        <span class="chip bg-color">echarts</span>
+                    <a href="/tags/react/">
+                        <span class="chip bg-color">react</span>
                     </a>
                     
                 </div>
@@ -1193,7 +1628,7 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
                 <a href="/2021/07/14/d3/">
@@ -1227,7 +1662,6 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1428,7 +1862,7 @@ g<span class="token punctuation">.</span><span class="token function">selectAll<
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-            <span id="year">2021-2022</span>
+            <span id="year">2021</span>
             
             <span id="year">2021</span>
             <a href="/about" target="_blank">Just a coder</a>
