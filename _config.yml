@@ -111,3 +111,40 @@ search:
 permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
+
+all_minifier: true
+
+# html压缩
+html_minifier:
+  enable: true
+  ignore_error: false
+  exclude:
+
+# css压缩
+css_minifier:
+  enable: true
+  exclude:
+    - '*.min.css'
+    
+# js压缩
+js_minifier:
+  enable: true
+  mangle: true
+  compress:
+  exclude:
+    - '*.min.js'
+js_concator:
+  enable: false
+  bundle_path: '/js/bundle.js'
+  front: false
+  silent: false
+
+# 图片优化
+image_minifier:
+  enable: true
+  interlaced: false
+  multipass: false
+  optimizationLevel: 2
+  pngquant: false
+  progressive: false
+
